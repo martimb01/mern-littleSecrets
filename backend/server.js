@@ -9,7 +9,9 @@ app.use(express.json())
 
 const PORT = process.env.PORT || 3000;
 
+
+//Starting server
 app.listen(PORT, () => {
-    console.log('Server listening on port' + PORT)
+    console.log('Server listening on port ' + PORT)
     connectDB()
 })
