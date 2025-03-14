@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/userModel')
 const router = express.Router()
+const bcrypt = require('bcrypt')
 
 router.get('/', async (req,res) => {
     try{
@@ -21,13 +22,13 @@ router.post('/register', async (req, res) => {
             console.log('Not all fields completed')
             return
         }
-        const usernameValidation = constrainsValidator('username', user.username)
-        const passwordValidation = constrainsValidator('password', user.password)
-        const emailValidation = constrainsValidator('email', user.email)
+        const usernameValidation = await constrainsValidator('username', user.username)
+        const passwordValidation = await constrainsValidator('password', user.password)
+        const emailValidation = await constrainsValidator('email', user.email)
 
         if (!usernameValidation.valid) {
-            res.status(400).json({message:'Username needs to be longer!'})
-            console.log('Username needs to be longer!')
+            res.status(400).json({message: usernameValidation.message})
+            console.log(usernameValidation.message)
             return
         }
 
@@ -38,16 +39,21 @@ router.post('/register', async (req, res) => {
         }
 
         if (!emailValidation.valid) {
-            res.status(400).json({message:'Email invalid!'})
-            console.log('Email invalid!')
+            res.status(400).json({message: emailValidation.message})
+            console.log(emailValidation.message)
             return
         }
 
         if(usernameValidation.valid && passwordValidation.valid && emailValidation.valid ){
-            const newUser = new User(user)
+            const salt = await bcrypt.genSalt(10)
+            const hashedPassword = await bcrypt.hash(user.password, salt)
+
+            const newUser = new User({username: user.username, 
+                                      password: hashedPassword, 
+                                      email: user.email})
             await newUser.save()
-            console.log('New user created!')
-            return
+            res.status(201).send(newUser)
+            console.log('New user created', newUser)
         }
     } catch (err) {
         res.status(500).json({ message: 'Something went very wrong!' })
@@ -57,18 +63,6 @@ router.post('/register', async (req, res) => {
 
 router.post('/login', async (req,res) => {
     try{
-        const {username, password} = req.body
-        const usernameMatch = await User.findOne({ username });
-        const passwordMatch = await User.findOne({ password });
-
-        if (!usernameMatch || !passwordMatch) {
-            return !usernameMatch ? res.json({message:'Username does not exist'}) : res.json({message:'Password does not exist'})
-        }
-
-        console.log('User logged in')
-        
-
-        
 
     } catch (err) {
         console.log(err.message)
@@ -77,7 +71,7 @@ router.post('/login', async (req,res) => {
 
 
 //Helper functions
-function constrainsValidator(field,toValidate) {
+async function constrainsValidator(field,toValidate) {
     
     if (field === 'username' ||  field === 'password') {
         if (toValidate.length <= 4)   {
@@ -90,6 +84,16 @@ function constrainsValidator(field,toValidate) {
         if (!emailRegex.test(toValidate)) {
             return {valid: false, message: `Invalid email`}
         }
+    }
+
+    const usernameAlreadyUsed = await User.findOne({username:toValidate})
+    if (usernameAlreadyUsed) {
+        return {valid: false, message: 'Username already in use'}
+    }
+
+    const emailAlreadyUsed = await User.findOne({email: toValidate});
+    if (emailAlreadyUsed) {
+        return {valid: false, message:'Email already in use'}
     }
 
     return {valid: true}
