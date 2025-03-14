@@ -12,7 +12,6 @@ router.get('/', async (req,res) => {
     }
 })
 
-
 // Register an user
 router.post('/register', async (req, res) => {
     try {
@@ -53,6 +52,26 @@ router.post('/register', async (req, res) => {
     } catch (err) {
         res.status(500).json({ message: 'Something went very wrong!' })
         console.log('Something went very wrong!', err)
+    }
+})
+
+router.post('/login', async (req,res) => {
+    try{
+        const {username, password} = req.body
+        const usernameMatch = await User.findOne({ username });
+        const passwordMatch = await User.findOne({ password });
+
+        if (!usernameMatch || !passwordMatch) {
+            return !usernameMatch ? res.json({message:'Username does not exist'}) : res.json({message:'Password does not exist'})
+        }
+
+        console.log('User logged in')
+        
+
+        
+
+    } catch (err) {
+        console.log(err.message)
     }
 })
 
