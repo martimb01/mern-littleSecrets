@@ -12,6 +12,8 @@ router.get('/', async (req,res) => {
     }
 })
 
+
+// Register an user
 router.post('/register', async (req, res) => {
     try {
         const user = req.body;
@@ -48,16 +50,11 @@ router.post('/register', async (req, res) => {
             console.log('New user created!')
             return
         }
-
-
-
     } catch (err) {
         res.status(500).json({ message: 'Something went very wrong!' })
         console.log('Something went very wrong!', err)
     }
 })
-
-module.exports = router;
 
 
 //Helper functions
@@ -79,3 +76,5 @@ function constrainsValidator(field,toValidate) {
     return {valid: true}
 
 }
+
+module.exports = router;
