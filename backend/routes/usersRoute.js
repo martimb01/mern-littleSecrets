@@ -9,11 +9,18 @@ router.post('/register', async (req, res) => {
             res.status(400).json({ message: 'All fields need to be completed' })
             console.log('Not all fields completed')
         }
-
-        if (constrainsValidator('username', req.body.username, res) || 
-            constrainsValidator('password', req.body.password, res) || 
-            constrainsValidator('email', req.body.email, res)) {
-                return
+        const usernameValidation = constrainsValidator('username', user.username, res)
+        const passwordValidation = constrainsValidator('password', user.password, res)
+        const emailValidation = constrainsValidator('email', user.email, res)
+        if (!usernameValidation.valid) {
+            res.status(400).json({message: 'Username needs to be atleast 5 chars long!'})
+            console.log('Username needs to be atleast 5 chars long')
+            } else if (!passwordValidation.valid) {
+                res.status(400).json({message: 'Password needs to be atleast 5 chars long!'})
+                console.log('Username needs to be atleast 5 chars long')  
+            } else if (!emailValidation.valid) {
+                res.status(400).json({message: 'Invalid email'})
+                console.log('Invalid email')  
             } else {
                 const newUser = new User(user)
                 await newUser.save()
@@ -23,6 +30,7 @@ router.post('/register', async (req, res) => {
 
     } catch (err) {
         res.status(500).json({ message: 'Something went very wrong!' })
+        
         console.log('Something went very wrong!', err)
     }
 })
@@ -34,16 +42,14 @@ module.exports = router;
 function constrainsValidator(field,toValidate,res) {
     if (field === 'username' ||  field === 'password') {
         if (toValidate.length <= 4)   {
-            res.status(400).json({message: `${field} needs to be atleast 5 characters long!`})
-            return false
+            return {valid: false, message: `${field} needs to be alteast 5 characters long!`}
         }
     }
 
     if (field === 'email') {
         const  emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(toValidate)) {
-            res.status(400).json({message: 'Invalid email adress'})
-            return false
+            return {valid: false, message: `Invalid email`}
         }
     }
 
