@@ -61,8 +61,22 @@ router.post('/register', async (req, res) => {
     }
 })
 
+
+// Log-in for users
 router.post('/login', async (req,res) => {
     try{
+        const user = await User.findOne({username: req.body.username})
+        if (!user) {
+            console.log('User with that username does not exist')
+            res.status(500).json({message: 'Invalid username or password!'})
+            return
+        }
+
+        if ( await bcrypt.compare(req.body.password, user.password)) {
+            res.status(200).send('User logged In')
+        } else {
+            res.status(500).send('Password Incorrect')
+        }
 
     } catch (err) {
         console.log(err.message)
