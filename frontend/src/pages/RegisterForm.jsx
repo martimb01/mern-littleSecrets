@@ -24,9 +24,7 @@ const RegisterForm =  () => {
             console.log(JSON.stringify(res.data))
             setSuccessMessage(res.data.message + ' Redirecting to Login Page!')
             setErrorMessage('')
-            setTimeout(() => {
-                nav('/login')
-            }, 3000)
+            setTimeout(() => { nav('/login') }, 3000)
         } catch (err) {
             console.log(err.response.data)
             setErrorMessage(err.response.data.message)
