@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
+import './FormStyles.css'
 
 
 const LoginForm = () => {
@@ -36,21 +37,21 @@ const LoginForm = () => {
         <>
         <h1>Login Form</h1>
         <form onSubmit={handleLogin}>
-            <label>username
-                <input type='text'
-                 name='username'
-                 value={inputs.username || ''}
-                 onChange={handleChange} />
-            </label>
+            <div className='form-row'>
+                <label>username</label>
+                    <input type='text'
+                    name='username'
+                    value={inputs.username || ''}
+                    onChange={handleChange} />
+            </div>
             <br />
-
-            <br />
-            <label> password
-                <input type='password'
-                 name='password'
-                 value={inputs.password || ''}
-                 onChange={handleChange} />
-            </label>
+            <div className='form-row'>
+                <label> password</label>
+                    <input type='password'
+                    name='password'
+                    value={inputs.password || ''}
+                    onChange={handleChange} />
+            </div>
             <br />
             <button type="submit">Login!</button>
         </form>
