@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const RegisterForm =  () => {
     const [inputs, setInputs] = useState({})
@@ -22,6 +23,7 @@ const RegisterForm =  () => {
             console.log(JSON.stringify(res.data))
             setSuccessMessage(JSON.stringify(res.data.message))
             setErrorMessage('')
+            Navigate('/login')
         } catch (err) {
             console.log(err.response.data)
             setErrorMessage(JSON.stringify(err.response.data.message))
