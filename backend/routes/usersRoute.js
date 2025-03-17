@@ -2,6 +2,7 @@ const express = require('express');
 const User = require('../models/userModel')
 const router = express.Router()
 const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 router.get('/', async (req,res) => {
     try{
@@ -73,7 +74,8 @@ router.post('/login', async (req,res) => {
         }
 
         if ( await bcrypt.compare(req.body.password, user.password)) {
-            res.status(200).json({message: 'Logged-In!'})
+            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {expiresIn: '1h'})
+            res.status(200).json({message: 'Logged-In!', token})
         } else {
             res.status(500).json({message: 'Invalid username or password!', devMessage: 'Password for that username is incorrect!'})
         }
@@ -82,6 +84,26 @@ router.post('/login', async (req,res) => {
         console.log(err.message)
     }
 })
+
+//Authentication middleware
+const authMiddleware = (req, res, next) => {
+    const token = req.header('Authorization').replace('Bearer ', '');
+    
+    if(!token) {
+        console.log('Missing the good ol token')
+        return res.status(401).json({message: 'No token!'})
+    }
+
+    try {
+        const jwtVerify = jwt.verify(token, process.env.JWT_SECRET)
+        req.user = jwtVerify
+        next()
+    } catch (err) {
+        console.log(err.message)
+        res.status(401).json({message: 'JWT token not valid!'})
+    }
+
+}
 
 
 //Helper functions
