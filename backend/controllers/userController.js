@@ -71,6 +71,14 @@ const loginUser = async (req,res) => {
     }
 }
 
+const userDetails = async (req,res) => {
+    try{
+
+    } catch {
+        
+    }
+}
+
 //Helper functions
 async function constrainsValidator(field,toValidate) {
     

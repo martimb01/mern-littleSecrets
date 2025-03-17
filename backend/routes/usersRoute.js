@@ -4,7 +4,7 @@ const router = express.Router()
 const {registerUser, loginUser} = require('../controllers/userController')
 const {JWTauthMiddleware} = require('../controllers/JWTauthController')
 
-router.get('/', async (req,res) => {
+router.get('/', JWTauthMiddleware, async (req,res) => {
     try{
         const users = await User.find({}) 
         console.log(users)

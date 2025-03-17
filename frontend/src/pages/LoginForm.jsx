@@ -16,6 +16,7 @@ const LoginForm = () => {
         try {
             const res = await axios.post('http://localhost:3000/user/login', inputs)
             console.log('LoggedIn!', res.data.token)
+            localStorage.setItem('token', res.data.token)
             setSuccessMessage(res.data.message)
             setTimeout(() => {nav('/dashboard')}, 3000)
         } catch (err) {

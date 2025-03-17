@@ -2,7 +2,14 @@ const jwt = require('jsonwebtoken')
 
 //Authentication middleware
 const JWTauthMiddleware = (req, res, next) => {
-    const token = req.header('Authorization').replace('Bearer ', '');
+    const authHeader = req.header('Authorization')
+
+    if (!authHeader) {
+        console.log('Auth header does not exist!')
+        return res.status(401).json({message: "No auth header provided!"})
+    }
+
+    const token = authHeader.replace('Bearer ', '');
     
     if(!token) {
         console.log('Missing the good ol token')
