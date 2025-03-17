@@ -75,8 +75,10 @@ const userDetails = async (req,res) => {
     try{
         const user = await User.findById(req.user.id)
         if(!user) {
-            res.status(404).json({message: "User by that id not found!"})
+          return res.status(404).json({message: "User by that id not found!"})
         }
+        res.status(200).json({message:'User Found!', user} )
+
     } catch (err) {
         console.log(err.message)
     }
@@ -114,4 +116,4 @@ async function constrainsValidator(field,toValidate) {
 }
 
 
-module.exports = {registerUser, loginUser}
+module.exports = {registerUser, loginUser, userDetails}
