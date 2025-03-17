@@ -11,7 +11,7 @@ const JWTauthMiddleware = (req, res, next) => {
 
     const token = authHeader.replace('Bearer ', '');
     
-    if(!token) {
+    if(!token || token === 'Bearer' ) {
         console.log('Missing the good ol token')
         return res.status(401).json({message: 'No token!'})
     }

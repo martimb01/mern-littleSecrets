@@ -4,11 +4,14 @@ const router = express.Router()
 const {registerUser, loginUser} = require('../controllers/userController')
 const {JWTauthMiddleware} = require('../controllers/JWTauthController')
 
+
+//Just for testing the JWT
 router.get('/', JWTauthMiddleware, async (req,res) => {
     try{
+        const testio = req.user
         const users = await User.find({}) 
         console.log(users)
-        res.status(200).send(users)
+        res.status(200).json({users, testio})
     } catch (err) {
         console.log(err.message)
     }
@@ -20,6 +23,9 @@ router.post('/register', registerUser)
 
 // Log-in for users
 router.post('/login', loginUser )
+
+//Get user details
+//router.get('/me', JWTauthMiddleware, userDetails)
 
 
 

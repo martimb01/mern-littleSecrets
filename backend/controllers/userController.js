@@ -73,9 +73,12 @@ const loginUser = async (req,res) => {
 
 const userDetails = async (req,res) => {
     try{
-
-    } catch {
-        
+        const user = await User.findById(req.user.id)
+        if(!user) {
+            res.status(404).json({message: "User by that id not found!"})
+        }
+    } catch (err) {
+        console.log(err.message)
     }
 }
 
