@@ -4,6 +4,8 @@ import axios from 'axios'
 
 const RegisterForm =  () => {
     const [inputs, setInputs] = useState({})
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (event) =>{
         const name = event.target.name;
@@ -16,10 +18,14 @@ const RegisterForm =  () => {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:3000/user/register', inputs)
-            console.log(JSON.stringify(response.data))
+            const res = await axios.post('http://localhost:3000/user/register', inputs)
+            console.log(JSON.stringify(res.data))
+            setSuccessMessage(JSON.stringify(res.data.message))
+            setErrorMessage('')
         } catch (err) {
-            console.log(err.message)
+            console.log(err.response.data)
+            setErrorMessage(JSON.stringify(err.response.data.message))
+            setSuccessMessage('')
         }
 
     }
@@ -51,6 +57,8 @@ const RegisterForm =  () => {
             <br />
             <button type="submit">Register!</button>
         </form>
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </>
     )
 }

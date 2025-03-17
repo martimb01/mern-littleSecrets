@@ -101,11 +101,12 @@ async function constrainsValidator(field,toValidate) {
     }
 
     const usernameAlreadyUsed = await User.findOne({username:toValidate})
+    const emailAlreadyUsed = await User.findOne({email: toValidate})
+    
     if (usernameAlreadyUsed) {
         return {valid: false, message: 'Username already in use'}
     }
 
-    const emailAlreadyUsed = await User.findOne({email: toValidate});
     if (emailAlreadyUsed) {
         return {valid: false, message:'Email already in use'}
     }
