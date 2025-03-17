@@ -7,6 +7,7 @@ const RegisterForm =  () => {
     const [inputs, setInputs] = useState({})
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const nav = useNavigate()
 
     const handleChange = (event) =>{
         const name = event.target.name;
@@ -21,12 +22,14 @@ const RegisterForm =  () => {
         try {
             const res = await axios.post('http://localhost:3000/user/register', inputs)
             console.log(JSON.stringify(res.data))
-            setSuccessMessage(JSON.stringify(res.data.message))
+            setSuccessMessage(res.data.message + ' Redirecting to Login Page!')
             setErrorMessage('')
-            Navigate('/login')
+            setTimeout(() => {
+                nav('/login')
+            }, 3000)
         } catch (err) {
             console.log(err.response.data)
-            setErrorMessage(JSON.stringify(err.response.data.message))
+            setErrorMessage(err.response.data.message)
             setSuccessMessage('')
         }
 
