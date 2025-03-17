@@ -52,7 +52,7 @@ router.post('/register', async (req, res) => {
                                       password: hashedPassword, 
                                       email: user.email})
             await newUser.save()
-            res.status(201).send(newUser)
+            res.status(201).json({message: 'User created sucessfuly!!', userFields: newUser})
             console.log('New user created', newUser)
         }
     } catch (err) {
