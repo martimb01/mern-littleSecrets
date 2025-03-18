@@ -22,17 +22,15 @@ const UserDashboard = () => {
         }
         getUserDetails()
     }, [])
-
-    useEffect(() => {
-        if (userDetails) {
-            console.log(userDetails);
-        }
-    }, [userDetails]);
     
     return(
         <>
-        <h1>Welcome to ur dashboard mah boy</h1>
-        <p></p>
+        {userDetails ? (
+            <div>
+            <h1>Welcome to your dashboard, {userDetails.username}</h1>
+            <p>{userDetails.email}</p>
+            </div>
+            ) : <h1>Loading...</h1>}
         </>
     )
 }
