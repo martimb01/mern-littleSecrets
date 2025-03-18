@@ -45,8 +45,8 @@ const registerUser = async (req, res) => {
             console.log('New user created', newUser)
         }
     } catch (err) {
-        res.status(500).json({ message: 'Something went very wrong!' })
         console.log('Something went very wrong!', err)
+        res.status(500).json({ message: 'Something went very wrong registering user!' })
     }
 }
 
