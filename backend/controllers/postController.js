@@ -8,7 +8,11 @@ const createPost = async (req, res) => {
            return res.status(400).json({message: 'Post needs to have both a title and content!'})
         }
         
-        const newPost = new Post(post)
+        const newPost = new Post({
+            title: post.title,
+            content: post.content,
+            userId: req.user.id
+        })
         await newPost.save()
         res.status(201).json({message:'Post created!'})
 

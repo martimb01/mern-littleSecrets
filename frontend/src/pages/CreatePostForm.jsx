@@ -16,7 +16,12 @@ const CreatePostForm = () => {
         event.preventDefault();
 
         try{
-           const res = await axios.post('http://localhost:3000/post/create', inputs)
+           const token = localStorage.getItem('token')
+           const res = await axios.post('http://localhost:3000/post/create', inputs, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+           })
            console.log(res.data.message)
            setSuccessMessage(res.data.message)
            setTimeout(() => {setSuccessMessage('')}, 2000)

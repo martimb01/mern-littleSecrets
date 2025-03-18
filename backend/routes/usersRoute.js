@@ -2,7 +2,7 @@ const express = require('express');
 const User = require('../models/userModel')
 const router = express.Router()
 const {registerUser, loginUser, userDetails} = require('../controllers/userController')
-const {JWTauthMiddleware} = require('../controllers/JWTauthController')
+const JWTauthMiddleware = require('../controllers/JWTauthController')
 
 
 //Just for testing the JWT
