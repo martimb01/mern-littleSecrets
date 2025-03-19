@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import CreatePostForm from './CreatePostForm'
+import './css/postStyle.css'
 
 //Helper Functions
 //Function to get user posts
@@ -46,7 +47,7 @@ const UserDashboard = () => {
     useEffect(() => {
         getUserPosts(setUserPosts);
         getUserDetails(setUserDetails)
-    }, [userPosts])
+    }, [])
     
     return(
         <>
@@ -62,7 +63,7 @@ const UserDashboard = () => {
             better code separation */}
             {userPosts ? (
                 userPosts.map((post) => (
-                    <div key={post._id}>
+                    <div key={post._id} className='post-container'>
                         <h3>{post.title}</h3>
                         <p>{post.content}</p>
                     </div>
