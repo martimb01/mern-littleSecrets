@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const registerUser = async (req, res) => {
     try {
         const user = req.body;
-        if (!user.username || !user.email || !user.password) {
+        if (!user.username || !user.email || !user.password || !user.firstName || !user.lastName || !user.dateOfBirth)  {
             res.status(400).json({ message: 'All fields need to be completed' })
             console.log('Not all fields completed')
             return
@@ -39,7 +39,10 @@ const registerUser = async (req, res) => {
 
             const newUser = new User({username: user.username, 
                                       password: hashedPassword, 
-                                      email: user.email})
+                                      email: user.email,
+                                      firstName: user.firstName,
+                                      lastName: user.lastName,
+                                      dateOfBirth: user.dateOfBirth})
             await newUser.save()
             res.status(201).json({message: 'User created sucessfuly!!', userFields: newUser})
             console.log('New user created', newUser)

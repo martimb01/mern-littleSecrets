@@ -23,4 +23,22 @@ const createPost = async (req, res) => {
     }
 }
 
-module.exports = {createPost}
+const getPosts = async (req,res) => {
+    try{
+        const posts = await Post.find({userId: req.user.id})
+
+        if(posts.length === 0) {
+            console.log("No posts by that userId")
+            return res.status(400).json({message: 'That user has no posts!'})
+        }
+
+        console.log("Posts with that userId found and sent!")
+        res.status(200).json({message: 'posts found!', posts})
+
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).json({message: "Something went wrong fetching posts!"})
+    }
+}
+
+module.exports = {createPost, getPosts}

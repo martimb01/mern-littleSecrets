@@ -45,6 +45,27 @@ const RegisterForm =  () => {
                     value={inputs.username || ''}
                     onChange={handleChange} />
             </div>
+            <div className='form-row'>
+                <label>First Name</label>
+                    <input type='text'
+                    name='firstName'
+                    value={inputs.firstName || ''}
+                    onChange={handleChange} />
+            </div>
+            <div className='form-row'>
+                <label>Last Name</label>
+                    <input type='text'
+                    name='lastName'
+                    value={inputs.lastName || ''}
+                    onChange={handleChange} />
+            </div>
+            <div className='form-row'>
+                <label>Date of Birth</label>
+                    <input type='date'
+                    name='dateOfBirth'
+                    value={inputs.dateOfBirth || ''}
+                    onChange={handleChange} />
+            </div>
             <br />
             <div className='form-row'>
                 <label>email</label>
