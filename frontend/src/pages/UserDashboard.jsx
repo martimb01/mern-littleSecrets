@@ -52,7 +52,7 @@ const UserDashboard = () => {
         <>
         {userDetails ? (
             <div>
-            <h1>Welcome to your dashboard, {userDetails.firstName + ' ' + userDetails.lastName}</h1>
+            <h1>Welcome to your dashboardy, {userDetails.firstName + ' ' + userDetails.lastName}</h1>
             <p>{userDetails.email + ' ' + JSON.stringify(userDetails.dateOfBirth).substring(1, 11)}</p>
             </div>) : <h1>Loading...</h1>}
             <CreatePostForm />
