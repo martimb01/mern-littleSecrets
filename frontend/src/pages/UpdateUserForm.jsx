@@ -80,6 +80,13 @@ const UpdateUserForm = () => {
                     value={inputs.password || ''}
                     onChange={handleChange} /> 
             </div>
+            <div className='form-row'>
+                <label>Profile Image Url</label>
+                    <input type='text'
+                    name='profileImgUrl'
+                    value={inputs.profileImgUrl || ''}
+                    onChange={handleChange} /> 
+            </div>
             <br />
             <button type="submit">Update!</button>
         </form>
