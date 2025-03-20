@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import {getUserDetails, getUserPosts} from '../apiHelpers.js'
-import './css/postStyle.css'
-import Logout from './components/Logout'
 import PostsDisplay from './components/postsDisplay'
 import  NavBar from  './components/NavBar'
 import styles from './css/homepageStyle.module.css'
 import './css/global.css'
+import WelcomeCard from './components/WelcomeCard.jsx'
 
 
 // User dashboard component
@@ -19,19 +18,11 @@ const HomePage = () => {
     }, [])
     
     return(
-        <>
-        <NavBar />
         <div className={styles.mainContainer}>
-        {userDetails ? (
-            <div>
-            <h1>Welcome back, {userDetails.firstName + ' ' + userDetails.lastName}</h1>
-            <p>{userDetails.email + ' ' + JSON.stringify(userDetails.dateOfBirth).substring(1, 11)}</p>
-            </div>) : <h1>Loading...</h1>}
-            <br/>
+            <NavBar />
+            <WelcomeCard userDetails={userDetails} />
             <PostsDisplay postDetails = {userPosts} />
-            <Logout />
-            </div>
-        </>
+        </div>
     )
 }
 
