@@ -74,6 +74,34 @@ const loginUser = async (req,res) => {
     }
 }
 
+const updateUser = async(req, res) => {
+    try{
+        const user = await User.findById(req.user.id)
+
+        if (!user) {
+             return res.status(400).json({message: "User by that id does not exist!"})
+        }
+
+        //If password is being updated, hash it before updating user in db
+        if(req.body.password) {
+            const salt = await bcrypt.genSalt(10);
+            req.body.password = await bcrypt.hash(req.body.password, salt)
+        }
+
+        const updatedUser = await User.findByIdAndUpdate(
+            req.user.id,
+            {$set: req.body},
+            {new: true}
+        )
+        console.log('Succesful user update!')
+        res.status(200).json({message: 'User has been updated!', updatedUser})
+
+    } catch (err) {
+        console.log (err.message)
+        res.status(500).json({message: 'Something went very wrong updating user!'})
+    }
+}
+
 const userDetails = async (req,res) => {
     try{
         const user = await User.findById(req.user.id)
@@ -119,4 +147,4 @@ async function constrainsValidator(field,toValidate) {
 }
 
 
-module.exports = {registerUser, loginUser, userDetails}
+module.exports = {registerUser, loginUser, userDetails, updateUser}
