@@ -82,6 +82,12 @@ const updateUser = async(req, res) => {
              return res.status(400).json({message: "User by that id does not exist!"})
         }
 
+        if( Object.values(req.body).every(value => value === '')) {
+            res.status(400).json({message: 'Nothing has been updated!'})
+            console.log("No field has been filled for updating!")
+            return
+        }
+
         //Verify constrains using the constrainValidatorFunction
         if (req.body.username) {
             const usernameValidation = await constrainsValidator('username', req.body.username)
@@ -122,6 +128,7 @@ const updateUser = async(req, res) => {
             {new: true}
         )
         console.log('Succesful user update!')
+        console.log(req.body)
         res.status(200).json({message: 'User has been updated!', updatedUser})
 
     } catch (err) {
@@ -167,7 +174,7 @@ async function constrainsValidator(field,toValidate) {
         }
     
     }
-    
+
     return {valid: true}
 }
 

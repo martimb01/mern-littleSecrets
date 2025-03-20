@@ -11,7 +11,7 @@ router.post('/register', registerUser)
 // Log-in for users
 router.post('/login', loginUser )
 
-// Log-out for users
+// Update for users
 router.put('/update', JWTauthMiddleware, updateUser)
 
 //Get user details after login

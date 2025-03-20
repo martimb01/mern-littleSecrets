@@ -24,9 +24,9 @@ const NavBar = () => {
             </li>
 
             <li className={styles.items} 
-            onClick={() => (nav('/postCreation'))}
+            onClick={() => (nav('/userUpdate'))}
             >
-                User
+                Update User
             </li>
 
         </ul>
