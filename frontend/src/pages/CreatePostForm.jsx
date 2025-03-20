@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import NavBar from './components/NavBar';
 
 const CreatePostForm = () => {
     const [inputs, setInputs] = useState({})
@@ -34,7 +35,8 @@ const CreatePostForm = () => {
 
     return(
         <>
-              <h1>Create Post</h1>
+        <NavBar />
+        <h1>Create Post</h1>
         <form onSubmit={handleSubmit}>
             <div className='form-row'>
                 <label>Title</label>

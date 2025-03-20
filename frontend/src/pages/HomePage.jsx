@@ -4,7 +4,7 @@ import CreatePostForm from './CreatePostForm'
 import './css/postStyle.css'
 import Logout from './components/Logout'
 import PostsDisplay from './components/postsDisplay'
-
+import  NavBar from  './components/NavBar'
 //Helper Functions
 //Function to get user posts
 const getUserPosts = async (setUserPosts) => {
@@ -42,7 +42,7 @@ const getUserDetails = async (setUserDetails) => {
 }
 
 // User dashboard component
-const UserDashboard = () => {
+const HomePage = () => {
     const [userDetails, setUserDetails] = useState(null)
     const [userPosts, setUserPosts] = useState([])
 
@@ -53,12 +53,12 @@ const UserDashboard = () => {
     
     return(
         <>
+        <NavBar />
         {userDetails ? (
             <div>
             <h1>Welcome to your dashboardy, {userDetails.firstName + ' ' + userDetails.lastName}</h1>
             <p>{userDetails.email + ' ' + JSON.stringify(userDetails.dateOfBirth).substring(1, 11)}</p>
             </div>) : <h1>Loading...</h1>}
-            <CreatePostForm />
             <br/>
             <PostsDisplay postDetails = {userPosts} />
             <Logout />
@@ -66,4 +66,4 @@ const UserDashboard = () => {
     )
 }
 
-export default UserDashboard
+export default HomePage

@@ -18,7 +18,7 @@ const LoginForm = () => {
             console.log('LoggedIn!', res.data.token)
             localStorage.setItem('token', res.data.token)
             setSuccessMessage(res.data.message)
-            setTimeout(() => {nav('/dashboard')}, 3000)
+            setTimeout(() => {nav('/homepage')}, 3000)
         } catch (err) {
             console.log(err.response.data.devMessage)
             setErrorMessage(err.response.data.message)
