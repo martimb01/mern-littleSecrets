@@ -13,7 +13,6 @@ const NavBar = () => {
                 src={logoText} 
                 onClick={() => (nav('/homepage'))}
                 alt="Site Logo"
-                style={{ cursor: 'pointer', width: '150px' }}
                 />
             </li>
 
