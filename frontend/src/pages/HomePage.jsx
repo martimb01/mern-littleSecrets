@@ -26,7 +26,6 @@ const HomePage = () => {
             <div>
             <h1>Welcome back, {userDetails.firstName + ' ' + userDetails.lastName}</h1>
             <p>{userDetails.email + ' ' + JSON.stringify(userDetails.dateOfBirth).substring(1, 11)}</p>
-            <img src={userDetails.profileImgUrl} alt="Profile image" />
             </div>) : <h1>Loading...</h1>}
             <br/>
             <PostsDisplay postDetails = {userPosts} />
