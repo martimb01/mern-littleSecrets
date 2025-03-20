@@ -1,6 +1,6 @@
 import React from "react"
 import { useNavigate } from 'react-router-dom'
-const WelcomePage = () =>{
+const LandingPage = () =>{
     const nav = useNavigate()
 
     const handleRedirect = (event) => {
@@ -19,4 +19,4 @@ const WelcomePage = () =>{
     )
 }
 
-export default WelcomePage
+export default LandingPage

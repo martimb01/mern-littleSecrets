@@ -3,6 +3,7 @@ import axios from 'axios'
 import CreatePostForm from './CreatePostForm'
 import './css/postStyle.css'
 import Logout from './components/Logout'
+import PostsDisplay from './components/postsDisplay'
 
 //Helper Functions
 //Function to get user posts
@@ -59,17 +60,8 @@ const UserDashboard = () => {
             </div>) : <h1>Loading...</h1>}
             <CreatePostForm />
             <br/>
-
-            {/* Test to see if posts show up, later to replace with the posts component for
-            better code separation */}
-            {userPosts ? (
-                userPosts.map((post) => (
-                    <div key={post._id} className='post-container'>
-                        <h3>{post.title}</h3>
-                        <p>{post.content}</p>
-                    </div>
-                ))) : <p>Loading...</p>}
-                <Logout />
+            <PostsDisplay postDetails = {userPosts} />
+            <Logout />
         </>
     )
 }
