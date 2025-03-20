@@ -24,6 +24,10 @@ const userSchema =  new mongoose.Schema({
     dateOfBirth:{
         type: Date,
         required: true
+    },
+    profileImgUrl: {
+        type: String,
+        required: true
     }
 })
 

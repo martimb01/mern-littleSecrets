@@ -34,6 +34,11 @@ const registerUser = async (req, res) => {
         }
 
         if(usernameValidation.valid && passwordValidation.valid && emailValidation.valid ){
+
+            if (user.profileImgUrl == '') {
+                user.profileImgUrl = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg'
+            }
+            
             const salt = await bcrypt.genSalt(10)
             const hashedPassword = await bcrypt.hash(user.password, salt)
 
@@ -42,7 +47,9 @@ const registerUser = async (req, res) => {
                                       email: user.email,
                                       firstName: user.firstName,
                                       lastName: user.lastName,
-                                      dateOfBirth: user.dateOfBirth})
+                                      dateOfBirth: user.dateOfBirth,
+                                      profileImgUrl: user.profileImgUrl})
+                                      
             await newUser.save()
             res.status(201).json({message: 'User created sucessfuly!!', userFields: newUser})
             console.log('New user created', newUser)
