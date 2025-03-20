@@ -20,9 +20,10 @@ router.get('/', JWTauthMiddleware, async (req,res) => {
 // Register an user
 router.post('/register', registerUser)
 
-
 // Log-in for users
 router.post('/login', loginUser )
+
+// Log-out for users
 
 //Get user details after login
 router.get('/me', JWTauthMiddleware, userDetails)

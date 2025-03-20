@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import CreatePostForm from './CreatePostForm'
 import './css/postStyle.css'
+import Logout from './components/Logout'
 
 //Helper Functions
 //Function to get user posts
@@ -68,6 +69,7 @@ const UserDashboard = () => {
                         <p>{post.content}</p>
                     </div>
                 ))) : <p>Loading...</p>}
+                <Logout />
         </>
     )
 }
