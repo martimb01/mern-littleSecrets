@@ -17,7 +17,4 @@ router.put('/update', JWTauthMiddleware, updateUser)
 //Get user details after login
 router.get('/me', JWTauthMiddleware, userDetails)
 
-
-
-
 module.exports = router;

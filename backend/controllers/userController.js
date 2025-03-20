@@ -22,8 +22,8 @@ const registerUser = async (req, res) => {
         }
 
         if (!passwordValidation.valid) {
-            res.status(400).json({message:'Password needs to be longer!'})
-            console.log('Password needs to be longer!')
+            res.status(400).json({message: passwordValidation.message})
+            console.log(passwordValidation.message)
             return
         }
 
@@ -82,6 +82,34 @@ const updateUser = async(req, res) => {
              return res.status(400).json({message: "User by that id does not exist!"})
         }
 
+        //Verify constrains using the constrainValidatorFunction
+        if (req.body.username) {
+            const usernameValidation = await constrainsValidator('username', req.body.username)
+            if (!usernameValidation.valid) {
+                res.status(400).json({message: usernameValidation.message})
+                console.log(usernameValidation.message)
+                return
+            }
+        }
+        
+        if (req.body.email) {
+            const emailValidation = await constrainsValidator('email', req.body.email)
+            if (!emailValidation.valid) {
+                res.status(400).json({message: emailValidation.message})
+                console.log(emailValidation.message)
+                return
+            }
+        }
+
+        if (req.body.password) {
+            const passwordValidation = await constrainsValidator('password', req.body.password)
+            if (!passwordValidation.valid) {
+                res.status(400).json({message: passwordValidation.message})
+                console.log(passwordValidation.message)
+                return
+            }
+        }
+
         //If password is being updated, hash it before updating user in db
         if(req.body.password) {
             const salt = await bcrypt.genSalt(10);
@@ -122,6 +150,10 @@ async function constrainsValidator(field,toValidate) {
         if (toValidate.length <= 4)   {
             return {valid: false, message: `${field} needs to be alteast 5 characters long!`}
         }
+        const usernameAlreadyUsed = await User.findOne({username:toValidate})
+        if (usernameAlreadyUsed) {
+            return {valid: false, message: 'Username already in use'}
+        }
     }
 
     if (field === 'email') {
@@ -129,21 +161,14 @@ async function constrainsValidator(field,toValidate) {
         if (!emailRegex.test(toValidate)) {
             return {valid: false, message: `Invalid email`}
         }
-    }
-
-    const usernameAlreadyUsed = await User.findOne({username:toValidate})
-    const emailAlreadyUsed = await User.findOne({email: toValidate})
+        const emailAlreadyUsed = await User.findOne({email: toValidate})
+        if (emailAlreadyUsed) {
+            return {valid: false, message:'Email already in use'}
+        }
     
-    if (usernameAlreadyUsed) {
-        return {valid: false, message: 'Username already in use'}
     }
-
-    if (emailAlreadyUsed) {
-        return {valid: false, message:'Email already in use'}
-    }
-
+    
     return {valid: true}
-
 }
 
 
