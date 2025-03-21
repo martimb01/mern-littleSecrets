@@ -3,7 +3,7 @@ import styles from '../css/postStyle.module.css'
 import { TiDelete } from "react-icons/ti";
 import axios from 'axios'
 
-const PostsDisplay = ({postDetails}) => {
+const PostsDisplay = ({postDetails, refreshPosts}) => {
 
     const handleDelete = async (postToDeleteId) => {
         try {
@@ -16,12 +16,13 @@ const PostsDisplay = ({postDetails}) => {
             }
         })
             console.log('The delete button worked!')
+            refreshPosts();
         } catch (err) {
             console.log(err.response.data)
             console.log('The delete button did not work :(')
         }
-
     }
+
     return(
         <div className={styles.mainContainer}>
         {postDetails ? (

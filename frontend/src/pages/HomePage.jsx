@@ -12,6 +12,10 @@ const HomePage = () => {
     const [userDetails, setUserDetails] = useState(null)
     const [userPosts, setUserPosts] = useState([])
 
+    const refreshPosts = () => {
+        getUserPosts(setUserPosts)
+    }
+
     useEffect(() => {
         getUserPosts(setUserPosts);
         getUserDetails(setUserDetails)
@@ -22,7 +26,7 @@ const HomePage = () => {
         <NavBar />
         <div className={styles.mainContainer}>
             <WelcomeCard userDetails={userDetails} />
-            <PostsDisplay postDetails = {userPosts} />
+            <PostsDisplay postDetails = {userPosts} refreshPosts={refreshPosts} />
         </div>
         </>
     )
