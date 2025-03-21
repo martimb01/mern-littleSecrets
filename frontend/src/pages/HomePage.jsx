@@ -24,7 +24,7 @@ const HomePage = () => {
     return(
         <>
         <NavBar />
-        <div className={styles.mainContainer}>
+        <div className={styles.homepageContainer}>
             <WelcomeCard userDetails={userDetails} />
             <PostsDisplay postDetails = {userPosts} refreshPosts={refreshPosts} />
         </div>

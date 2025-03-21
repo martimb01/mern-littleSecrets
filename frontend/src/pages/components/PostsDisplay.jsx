@@ -1,5 +1,5 @@
 import React from "react";
-import styles from '../css/postStyle.module.css'
+import styles from '../css/postsDisplayStyle.module.css'
 import { TiDelete } from "react-icons/ti";
 import axios from 'axios'
 
@@ -23,8 +23,8 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
     }
 
     return(
-        <div className={styles.mainContainer}>
-        {postDetails ? (
+        <div className={styles.postsContainer}>
+        {postDetails && postDetails.length != 0 ? (
             postDetails.map((post) => (
                 <div key={post._id} className={styles.postCard} >
                     <h3>{post.title}</h3>
@@ -33,7 +33,7 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
                     <p>{post.content}</p>
                     {post.imgUrl && <img src={post.imgUrl} />}
                 </div>
-            ))) : <p>Loading...</p>}
+            ))) : <h2>No posts yet! Create one!</h2>}
         </div>
     )
 }
