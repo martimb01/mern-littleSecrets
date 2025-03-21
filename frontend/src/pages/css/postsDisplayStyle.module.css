@@ -1,32 +1,42 @@
 
-/* Container for the cards */
+
 .postsContainer {
   display: flex;
-  flex-wrap: wrap; /* Allow cards to wrap to the next row */
-  justify-content: space-between; /* Space between cards */
-  margin: 0 -16px; /* Adjust for card margins */
+  flex-direction: column;
+  gap: 15px; /* Space between posts */
+  width: 60%;
 }
 
-/* Delete Icon*/
-.deleteIcon {
-  color: red;
+.postCard {
+  margin-top: 2%;
+  display: flex;
+  flex-direction: row; /* Horizontal layout for content and cardRight */
+  border: 3px solid black;
+  border-radius: 10px;
+  align-items: stretch; /* Ensure children stretch to the height of the parent */
+  overflow: hidden; /* Prevent content overflow */
 }
 
-.deleteIcon:hover {
-  color: red;
-  transform: scale(1.01);
-  cursor: pointer;
+.cardLeft{
+  display: flex;
+  flex-direction: column;
+  flex:2;
+  background-color: yellow;
+  overflow-wrap: break-word
 }
 
-/* Media query for smaller screens */
-@media (max-width: 768px) {
-  .postCard {
-    flex: 1 1 calc(50% - 32px); /* Two cards per row on smaller screens */
-  }
+.headerRow{
+  display: flex;
+  flex-direction: row;
+}
+.content {
+  overflow-wrap: break-word; /* Ensure long words break to the next line */
+  word-break: break-word; /* Break long words if necessary */
 }
 
-@media (max-width: 480px) {
-  .postCard {
-    flex: 1 1 100%; /* One card per row on very small screens */
-  }
+.cardRight {
+  display: flex;
+  flex:1;
+  background-color: green;
 }
+

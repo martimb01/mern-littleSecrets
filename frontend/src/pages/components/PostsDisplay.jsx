@@ -27,11 +27,29 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
         {postDetails && postDetails.length != 0 ? (
             postDetails.map((post) => (
                 <div key={post._id} className={styles.postCard} >
-                    <h3>{post.title}</h3>
-                    <h3>{new Date(post.createdAt).toLocaleDateString()}</h3>
-                    <h3 className={styles.deleteIcon} onClick={() => {handleDelete(post._id)}}><TiDelete /></h3>
-                    <p>{post.content}</p>
-                    {post.imgUrl && <img src={post.imgUrl} />}
+
+                    {/* Left side of card*/ }
+                    <div className={styles.cardLeft}>
+                        <div className={styles.headerRow}>
+                            <h3 className={styles.title}>{post.title}</h3>
+                            <h3 className={styles.date}>{new Date(post.createdAt).toLocaleDateString()}</h3>
+                            <h3 className={styles.deleteIcon} onClick={() => {handleDelete(post._id)}}><TiDelete /></h3>
+                        </div>
+                        {/* Post content */}
+                        <p className={styles.content}>{post.content}</p>
+                    </div>
+
+                    {/* Right side of card*/ }
+                    <div className={styles.cardRight}>
+                        {/* Image if there is one */}
+                        {post.imgUrl && (
+                        <div className={styles.image}>
+                            <img src={post.imgUrl} />
+                        </div>)}
+                    </div>                    
+
+
+
                 </div>
             ))) : <h2>No posts yet! Create one!</h2>}
         </div>
