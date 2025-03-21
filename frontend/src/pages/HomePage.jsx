@@ -18,11 +18,13 @@ const HomePage = () => {
     }, [])
     
     return(
+        <>
+        <NavBar />
         <div className={styles.mainContainer}>
-            <NavBar />
             <WelcomeCard userDetails={userDetails} />
             <PostsDisplay postDetails = {userPosts} />
         </div>
+        </>
     )
 }
 
