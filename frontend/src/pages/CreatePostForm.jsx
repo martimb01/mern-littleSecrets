@@ -45,14 +45,18 @@ const CreatePostForm = () => {
                     value={inputs.title || ''}
                     onChange={handleChange} />
             </div>
-            <br />
+            <div className='form-row'>
+                <label>Image (url)</label>
+                    <textarea name='imgUrl'
+                    value={inputs.imgUrl || ''}
+                    onChange={handleChange} />
+            </div>
             <div className='form-row'>
                 <label>Body</label>
                     <textarea name='content'
                     value={inputs.content || ''}
                     onChange={handleChange} />
             </div>
-            <br />
             <button type="submit">Create Post!</button>
         </form>
         {successMessage ? <p>{successMessage}</p> : ''}

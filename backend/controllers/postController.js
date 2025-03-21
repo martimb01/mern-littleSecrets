@@ -11,7 +11,8 @@ const createPost = async (req, res) => {
         const newPost = new Post({
             title: post.title,
             content: post.content,
-            userId: req.user.id
+            userId: req.user.id,
+            imgUrl: post.imgUrl
         })
         await newPost.save()
         res.status(201).json({message:'Post created!'})
@@ -41,4 +42,21 @@ const getPosts = async (req,res) => {
     }
 }
 
-module.exports = {createPost, getPosts}
+const deletePost = async (req,res) => {
+    try {
+        console.log(req.body)
+        const deletedPost = await Post.findByIdAndDelete(req.body.id)
+        if (!deletedPost) {
+            console.log("Post does not exist!")
+            return res.status(404).json({message: 'Post does not exist'})
+        }
+        console.log("Post has been deleted!")
+        return res.status(200).json({message: 'Post has been deleted'})
+
+    } catch (err) {
+        console.log(err.message)
+        return res.status(500).json({message: "Something went wrong deleting post!"})
+    }
+}
+
+module.exports = {createPost, getPosts, deletePost}

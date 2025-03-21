@@ -13,6 +13,9 @@ const postSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'User',
         required:true
+    },
+    imgUrl: {
+        type:String,
     }
 }, 
 {timestamps: true})

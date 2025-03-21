@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import {getUserDetails, getUserPosts} from '../apiHelpers.js'
-import PostsDisplay from './components/postsDisplay'
+import PostsDisplay from './components/PostsDisplay'
 import  NavBar from  './components/NavBar'
 import styles from './css/homepageStyle.module.css'
 import './css/global.css'
