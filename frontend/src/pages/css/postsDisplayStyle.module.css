@@ -13,15 +13,50 @@
   flex-direction: column; /* Horizontal layout for content and cardRight */
   border: 3px solid black;
   border-radius: 10px;
-  align-items: stretch; /* Ensure children stretch to the height of the parent */
-  overflow: hidden; /* Prevent content overflow */
+  overflow: hidden; /* Prevent content (including the image) from overflowing */
+}
+
+.headerRow {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 10px;
+  background-color: aliceblue;
+
+}
+
+.title {
+  margin-left: 20px;
+}
+
+.headerRight {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin:1% 1% 1% auto;
+  gap: 10px;
+}
+
+.date {
+  position: relative;
+  top: -2px;
+  font-size: 12px;
+}
+
+
+.deleteIcon {
+  margin:1% 1% 1% auto;
+  font-size: 35px;
+  color: red;
 }
 
 .content {
-  margin: 0% 3% 3% 3%;
+  margin: 2% 3% 3% 3%;
   overflow-wrap: break-word; /* Ensure long words break to the next line */
   word-break: break-word; /* Break long words if necessary */
+  background-color: pink;
 }
+
 
 
 
