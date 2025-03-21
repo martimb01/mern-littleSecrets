@@ -28,8 +28,7 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
             postDetails.map((post) => (
                 <div key={post._id} className={styles.postCard} >
 
-                    {/* Left side of card*/ }
-                    <div className={styles.cardLeft}>
+                        {/* Header content */}
                         <div className={styles.headerRow}>
                             <h3 className={styles.title}>{post.title}</h3>
                             <h3 className={styles.date}>{new Date(post.createdAt).toLocaleDateString()}</h3>
@@ -37,7 +36,6 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
                         </div>
                         {/* Post content */}
                         <p className={styles.content}>{post.content}</p>
-                    </div>
 
                     {/* Right side of card*/ }
                     <div className={styles.cardRight}>
