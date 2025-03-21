@@ -30,7 +30,7 @@ const getPosts = async (req,res) => {
 
         if(posts.length === 0) {
             console.log("No posts by that userId")
-            return res.status(400).json({message: 'That user has no posts!'})
+            return res.status(200).json({message: 'That user has no posts!', posts: []}, )
         }
 
         console.log("Posts with that userId found and sent!")

@@ -7,7 +7,6 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
 
     const handleDelete = async (postToDeleteId) => {
         try {
-            console.log(postDetails)
             const token = localStorage.getItem('token')
         await axios.delete('http://localhost:3000/post/delete', {
             data: {id: postToDeleteId},
@@ -16,7 +15,7 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
             }
         })
             console.log('The delete button worked!')
-            refreshPosts();
+            refreshPosts(); //Passed by the HomePage main container so it refreshes posts after a successful deletion
         } catch (err) {
             console.log(err.response.data)
             console.log('The delete button did not work :(')
