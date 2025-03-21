@@ -35,7 +35,7 @@ const registerUser = async (req, res) => {
 
         if(usernameValidation.valid && passwordValidation.valid && emailValidation.valid ){
 
-            if (user.profileImgUrl == '') {
+            if (user.profileImgUrl == '' || !user.profileImgUrl) {
                 user.profileImgUrl = 'https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg'
             }
             

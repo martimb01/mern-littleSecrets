@@ -21,12 +21,14 @@ const RegisterForm =  () => {
         event.preventDefault();
 
         try {
+            console.log(inputs)
             const res = await axios.post('http://localhost:3000/user/register', inputs)
             console.log(JSON.stringify(res.data))
             setSuccessMessage(res.data.message + ' Redirecting to Login Page!')
             setErrorMessage('')
             setTimeout(() => { nav('/login') }, 3000)
         } catch (err) {
+            console.log(inputs)
             console.log(err.response.data)
             setErrorMessage(err.response.data.message)
             setSuccessMessage('')
