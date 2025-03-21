@@ -5,7 +5,7 @@ const PostsDisplay = ({postDetails}) => {
         <>
         {postDetails ? (
             postDetails.map((post) => (
-                <div key={post._id} className='post-container'>
+                <div key={post._id}>
                     <h3>{post.title}</h3>
                     <p>{post.content}</p>
                 </div>

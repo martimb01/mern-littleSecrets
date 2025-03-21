@@ -37,6 +37,7 @@
     transition: transform 0.2s ease;
     background-color: white;
     border-radius: 3%;
+    margin-left: 20px;
 }
 
 .items img:hover {
@@ -44,12 +45,13 @@
 }
 
 .itemsProfileImg img {
-    width: 70px; /* Set a fixed width for the profile image */
-    height: 70px; /* Set a fixed height for the profile image */
+    width: 65px; /* Set a fixed width for the profile image */
+    height: 65px; /* Set a fixed height for the profile image */
     border-radius: 50%; /* Make the image round */
     object-fit: cover; /* Ensure the image fits within the circle */
     border: 2px solid #f0f0f0; /* Optional: Add a light border for better visibility */
     transition: transform 0.2s ease; /* Add a hover effect */
+    margin-right: 20px;
 }
 
 .itemsProfileImg img:hover {
