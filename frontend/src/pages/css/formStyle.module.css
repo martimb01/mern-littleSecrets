@@ -14,7 +14,7 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
     color: #f0f0f0; 
 }
- 
+
 .formRow {
     display: flex; 
     flex-direction: column; 
@@ -74,3 +74,35 @@
     }
 }
 
+.errorMessage {
+    display: flex;
+    margin: 90px auto 0 auto;
+    padding: 10px 0;
+    background-color: rgb(146, 42, 42);
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: bold;
+}
+
+.successMessage {
+    display: flex;
+    margin: 50px auto 0 auto;
+    padding: 10px 0;
+    background-color: green;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: bold;
+}
+
+
+ 

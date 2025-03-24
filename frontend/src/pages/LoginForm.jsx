@@ -37,6 +37,8 @@ const LoginForm = () => {
 
     return(
         <>
+        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         <form className={styles.formContainer} onSubmit={handleLogin}>
         <h1>Login Form</h1>
             <div className={styles.formRow}>
@@ -57,8 +59,6 @@ const LoginForm = () => {
             <br />
             <button type="submit">Login</button>
         </form>
-        { successMessage && <p className={styles.submitMessage}>{successMessage}</p>}
-        { errorMessage && <p className={styles.submitMessage}>{errorMessage}</p>}
         </>
     )
 }

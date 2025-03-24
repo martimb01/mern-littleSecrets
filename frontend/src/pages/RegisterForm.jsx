@@ -39,7 +39,8 @@ const RegisterForm =  () => {
 
     return (
         <>
-        
+        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         <form className={styles.formContainer} onSubmit={handleRegister}>
         <h1>Register form</h1>
             <div className={styles.formRow}>
@@ -89,8 +90,6 @@ const RegisterForm =  () => {
             <br />
             <button type='submit'>Register</button>
         </form>
-        {successMessage && <p className={styles.submitMessage}>{successMessage}</p>}
-        {errorMessage && <p className={styles.submitMessage}>{errorMessage}</p>}
         </>
     )
 }

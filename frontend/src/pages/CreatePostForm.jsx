@@ -27,6 +27,7 @@ const CreatePostForm = () => {
            console.log(res.data.message)
            setSuccessMessage(res.data.message)
            setTimeout(() => {setSuccessMessage('')}, 2000)
+           setErrorMessage('')
         } catch (err) {
             console.log(err.response.data.message)
             setErrorMessage(err.response.data.message)
@@ -37,7 +38,8 @@ const CreatePostForm = () => {
     return(
         <>
         <NavBar />
-        <h1>Create Post</h1>
+        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         <form onSubmit={handleSubmit} className={styles.formContainer}>
             <div className={styles.formRow}>
                 <label>Title</label>
@@ -60,8 +62,7 @@ const CreatePostForm = () => {
             </div>
             <button type="submit">Create Post!</button>
         </form>
-        {successMessage ? <p>{successMessage}</p> : ''}
-        {errorMessage ? <p>{errorMessage}</p> : ''}
+
         </>
     )
 }

@@ -35,7 +35,8 @@ const UpdateUserForm = () => {
     return (
         <>
         <NavBar />
-        <h1>Update user</h1>
+        {successMessage && <p className={styles.SuccessMessage}>{successMessage}</p>}
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         <form onSubmit={handleUpdate} className={styles.formContainer}>
             <div className={styles.formRow}>
                 <label>Username</label>
@@ -91,8 +92,6 @@ const UpdateUserForm = () => {
             <br />
             <button type="submit">Update!</button>
         </form>
-        {successMessage ? successMessage : errorMessage}
-        {}
         </>
     )
 }
