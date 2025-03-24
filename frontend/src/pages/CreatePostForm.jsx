@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import NavBar from './components/NavBar';
+import styles from './css/formStyle.module.css'
 
 const CreatePostForm = () => {
     const [inputs, setInputs] = useState({})
@@ -37,21 +38,21 @@ const CreatePostForm = () => {
         <>
         <NavBar />
         <h1>Create Post</h1>
-        <form onSubmit={handleSubmit}>
-            <div className='form-row'>
+        <form onSubmit={handleSubmit} className={styles.formContainer}>
+            <div className={styles.formRow}>
                 <label>Title</label>
                     <input type='text'
                     name='title'
                     value={inputs.title || ''}
                     onChange={handleChange} />
             </div>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>Image (url)</label>
-                    <textarea name='imgUrl'
+                    <input name='imgUrl'
                     value={inputs.imgUrl || ''}
                     onChange={handleChange} />
             </div>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>Body</label>
                     <textarea name='content'
                     value={inputs.content || ''}

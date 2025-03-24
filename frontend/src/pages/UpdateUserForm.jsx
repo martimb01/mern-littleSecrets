@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios'
 import NavBar from "./components/NavBar";
+import styles from './css/formStyle.module.css'
 
 const UpdateUserForm = () => {
     const [inputs,setInputs] = useState('');
@@ -35,29 +36,29 @@ const UpdateUserForm = () => {
         <>
         <NavBar />
         <h1>Update user</h1>
-        <form onSubmit={handleUpdate}>
-            <div className='form-row'>
+        <form onSubmit={handleUpdate} className={styles.formContainer}>
+            <div className={styles.formRow}>
                 <label>Username</label>
                     <input type='text'
                     name='username'
                     value={inputs.username || ''}
                     onChange={handleChange} />
             </div>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>First Name</label>
                     <input type='text'
                     name='firstName'
                     value={inputs.firstName || ''}
                     onChange={handleChange} />
             </div>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>Last Name</label>
                     <input type='text'
                     name='lastName'
                     value={inputs.lastName || ''}
                     onChange={handleChange} />
             </div>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>Date of Birth</label>
                     <input type='date'
                     name='dateOfBirth'
@@ -65,7 +66,7 @@ const UpdateUserForm = () => {
                     onChange={handleChange} />
             </div>
             <br />
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>Email</label>
                     <input type='text'
                     name='email'
@@ -73,14 +74,14 @@ const UpdateUserForm = () => {
                     onChange={handleChange} />
             </div>
             <br />
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>Password</label>
                     <input type='password'
                     name='password'
                     value={inputs.password || ''}
                     onChange={handleChange} /> 
             </div>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>Profile Image Url</label>
                     <input type='text'
                     name='profileImgUrl'
