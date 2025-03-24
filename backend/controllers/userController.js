@@ -51,7 +51,7 @@ const registerUser = async (req, res) => {
                                       profileImgUrl: user.profileImgUrl})
                                       
             await newUser.save()
-            res.status(201).json({message: 'User created sucessfuly!!', userFields: newUser})
+            res.status(201).json({message: 'User created sucessfuly!', userFields: newUser})
             console.log('New user created', newUser)
         }
     } catch (err) {

@@ -32,7 +32,6 @@ const LoginForm = () => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs((values) => {return {...values, [name]: value}})
-        console.log(inputs)
     }
 
     return(
@@ -40,7 +39,7 @@ const LoginForm = () => {
         {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         <form className={styles.formContainer} onSubmit={handleLogin}>
-        <h1>Login Form</h1>
+        <h1>Login</h1>
             <div className={styles.formRow}>
                 <label>username</label>
                     <input type='text'

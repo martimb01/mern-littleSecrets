@@ -7,6 +7,9 @@
   width: 60%;
   
 }
+.postsContainer h2{
+text-align: center;  
+}
 
 .postCard {
   margin-top: 2%;
