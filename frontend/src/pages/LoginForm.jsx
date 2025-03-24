@@ -2,6 +2,7 @@ import React from "react"
 import { useState } from "react"
 import axios from 'axios'
 import { useNavigate } from "react-router-dom"
+import styles from './css/formStyle.module.css'
 
 
 
@@ -36,9 +37,9 @@ const LoginForm = () => {
 
     return(
         <>
+        <form className={styles.formContainer} onSubmit={handleLogin}>
         <h1>Login Form</h1>
-        <form onSubmit={handleLogin}>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>username</label>
                     <input type='text'
                     name='username'
@@ -46,7 +47,7 @@ const LoginForm = () => {
                     onChange={handleChange} />
             </div>
             <br />
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label> password</label>
                     <input type='password'
                     name='password'
@@ -54,10 +55,10 @@ const LoginForm = () => {
                     onChange={handleChange} />
             </div>
             <br />
-            <button type="submit">Login!</button>
+            <button type="submit">Login</button>
         </form>
-        { successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-        { errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        { successMessage && <p className={styles.submitMessage}>{successMessage}</p>}
+        { errorMessage && <p className={styles.submitMessage}>{errorMessage}</p>}
         </>
     )
 }

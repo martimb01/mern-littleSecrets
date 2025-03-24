@@ -16,6 +16,7 @@
   border-radius: 10px;
   background-color: #353535;
   overflow: hidden; /* Prevent content (including the image) from overflowing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
 }
 
 .headerRow {

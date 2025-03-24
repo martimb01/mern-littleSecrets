@@ -39,10 +39,11 @@ const RegisterForm =  () => {
 
     return (
         <>
-        <h1>Register form</h1>
+        
         <form className={styles.formContainer} onSubmit={handleRegister}>
+        <h1>Register form</h1>
             <div className={styles.formRow}>
-                <label>username</label>
+                <label>Username</label>
                     <input type='text'
                     name='username'
                     value={inputs.username || ''}
@@ -62,7 +63,7 @@ const RegisterForm =  () => {
                     value={inputs.lastName || ''}
                     onChange={handleChange} />
             </div>
-            <div className={styles.formRowDate}>
+            <div className={styles.formRow}>
                 <label>Date of Birth</label>
                     <input type='date'
                     name='dateOfBirth'
@@ -71,7 +72,7 @@ const RegisterForm =  () => {
             </div>
             <br />
             <div className={styles.formRow}>
-                <label>email</label>
+                <label>Email</label>
                     <input type='text'
                     name='email'
                     value={inputs.email || ''}
@@ -79,17 +80,17 @@ const RegisterForm =  () => {
             </div>
             <br />
             <div className={styles.formRow}>
-                <label>password</label>
+                <label>Password</label>
                     <input type='password'
                     name='password'
                     value={inputs.password || ''}
                     onChange={handleChange} /> 
             </div>
             <br />
-            <button type={styles.submitBtn}>Register!</button>
+            <button type='submit'>Register</button>
         </form>
-        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        {successMessage && <p className={styles.submitMessage}>{successMessage}</p>}
+        {errorMessage && <p className={styles.submitMessage}>{errorMessage}</p>}
         </>
     )
 }

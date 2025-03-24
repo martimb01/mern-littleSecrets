@@ -1,22 +1,63 @@
+
 .formContainer {
-    display: flex;
-    flex-direction: column;
-    background-color: pink;
-    align-items: center;
-    margin: 0 auto;
-    padding: 50px 0;
-    gap: 10px;
-    width: 40%;
-    height:100%;
-    border-radius: 10px;
+    display: flex; 
+    flex-direction: column; 
+    background-color: #1a1a1a; 
+    align-items: center; 
+    justify-content: center;
+    margin:  auto; 
+    padding: 20px 50px 50px 50px; 
+    gap: 10px; 
+    width: 40%; 
+    min-height: 120%; /* Makes the container taller than the viewport */
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    color: #f0f0f0; 
 }
-
+ 
 .formRow {
-    display: flex;
-    flex-direction: column;
+    display: flex; 
+    flex-direction: column; 
+    width: 100%; 
+    gap: 1px; 
 }
 
-.formRowDate {
-    display: flex;
-    flex-direction: column;
+.formRow label {
+    font-size: 20px;
+    font-weight: bold;
 }
+
+.formRow input {
+    width: 100%;
+    padding: 10px; 
+    border: 1px solid #333; 
+    border-radius: 5px;  
+    font-size: 16px; 
+    box-sizing: border-box; 
+    background-color: #2a2a2a; 
+    color: #f0f0f0; 
+}
+
+.formContainer button {
+    padding: 10px 20px; 
+    background-color: #333; 
+    color: #f0f0f0; 
+    border: none;
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+.formContainer button:hover {
+    background-color: #444; 
+}
+
+/* Ensures the form container is responsive */
+@media (max-width: 768px) {
+    .formContainer {
+        width: 90%; /* Makes the container take up more space on smaller screens */
+        padding: 30px 10px; /* Adjusts padding for smaller screens */
+    }
+}
+
