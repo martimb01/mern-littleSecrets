@@ -4,12 +4,12 @@
     justify-content: center;
     margin-top: 2%;
     color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 0.2% 0 0.2% 0;
     width: 60%;
     height: 50px;
     text-align: center;
-    background-color: #1e1e2f;
+    background-color: #1a1a1a;
     transition: transform 0.2s ease;
     scale: 100%;
     font-size: clamp(12px, 1.5vw, 20px); /* Scales text inside of the container*/
@@ -17,5 +17,4 @@
 
 .welcomeContainer:hover {
     transform: scale(1.07); /* Slight zoom effect on logo hover */
-    background-color: #1e1e2f;
 }

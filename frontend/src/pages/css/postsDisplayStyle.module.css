@@ -5,14 +5,16 @@
   flex-direction: column;
   gap: 15px; /* Space between posts */
   width: 60%;
+  
 }
 
 .postCard {
   margin-top: 2%;
   display: flex;
   flex-direction: column; /* Horizontal layout for content and cardRight */
-  border: 3px solid black;
+  border: 3px solid #1a1a1a;
   border-radius: 10px;
+  background-color: #353535;
   overflow: hidden; /* Prevent content (including the image) from overflowing */
 }
 
@@ -20,8 +22,9 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border-radius: 10px;
-  background-color: aliceblue;
+  border-radius: 1px;
+  background-color: #1a1a1a;
+  color: white;
 
 }
 
@@ -50,19 +53,25 @@
   color: red;
 }
 
+.deleteIcon:hover {
+  scale: 1.05;
+}
+
 .content {
   margin: 2% 3% 3% 3%;
   overflow-wrap: break-word; /* Ensure long words break to the next line */
   word-break: break-word; /* Break long words if necessary */
-  background-color: pink;
+  color: white;
 }
 
 .image {
   width: 100%;
+  background-color: white;
 }
 
 .image img {
   width: 100%;
+  height: 100%;
 }
 
 
