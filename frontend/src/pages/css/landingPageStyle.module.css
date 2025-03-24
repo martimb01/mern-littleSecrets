@@ -59,7 +59,7 @@
 .mainContainer {
     display: flex;
     flex-direction: column;
-    margin-top: 150px;
+    margin-top: 100px;
     justify-content: center;
     align-items: center;
 }
@@ -80,12 +80,43 @@
 .register {
     margin-top: 30px; 
     font-size: 30px; 
-    color: white; /* Match the theme */
-    text-align: center; /* Center the text */
-    cursor: pointer; /* Add a pointer cursor for interactivity */
-    transition: color 0.3s ease; /* Add a hover effect */
+    color: white; 
+    text-align: center; 
+    cursor: pointer; 
+    transition: color 0.3s ease; 
 }
 
 .register:hover {
-    color: #000000; /* Change color on hover */
+    color: #000000; 
+}
+
+
+.errorMessage {
+    display: flex;
+    margin: 0 auto 0 auto;
+    padding: 3px 0;
+    background-color: rgb(146, 42, 42);
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: bold;
+}
+
+.successMessage {
+    display: flex;
+    margin: 0 auto 0 auto;
+    padding: 3px 0;
+    background-color: green;
+    justify-content: center;
+    align-items: center;
+    width: 40%;
+    height: 30px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    font-size: bold;
 }

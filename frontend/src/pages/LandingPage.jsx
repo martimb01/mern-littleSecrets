@@ -25,12 +25,13 @@ const LandingPage = () =>{
             console.log('LoggedIn!', res.data.token)
             localStorage.setItem('token', res.data.token)
             setSuccessMessage(res.data.message)
+            setErrorMessage('')
             setTimeout(() => {nav('/homepage')}, 3000)
 
         } catch (err) {
             console.log(err.response.data.devMessage)
             setErrorMessage(err.response.data.message)
-            setTimeout(() => {setErrorMessage('')}, 2000)
+            /*setTimeout(() => {setErrorMessage('')}, 2000)*/
         }
         
     }
@@ -62,7 +63,9 @@ const LandingPage = () =>{
         
 
         <div className={styles.mainContainer}>
-        <p className={styles.register} onClick={() => {nav('/register')}}>Dont have an account? Create one today!</p>
+            {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+            <p className={styles.register} onClick={() => {nav('/register')}}>Dont have an account? Create one today!</p>
             <img src={logo} className={styles.welcomeImg} />
         </div>
         </>
