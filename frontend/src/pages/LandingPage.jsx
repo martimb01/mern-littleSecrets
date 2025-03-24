@@ -1,6 +1,7 @@
 import React, {useState} from "react"
 import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logov1.png'
+import logoText from '../assets/logotextv0.png'
 import  styles from './css/landingPageStyle.module.css'
 import LoginForm from "./LoginForm"
 const LandingPage = () =>{
@@ -16,6 +17,7 @@ const LandingPage = () =>{
     return(
         <>
         <div className={styles.loginBar}>
+            <img src={logoText} />
             <form className={styles.loginForm}>
                 <div className={styles.loginFormRow}>
                     <label>Username</label>
@@ -32,6 +34,8 @@ const LandingPage = () =>{
                     value={input.password || ''}
                     onChange={handleChange}></input>
                 </div>
+
+                <button type="submit">Login</button>
             </form>
         </div>
         <img src={logo} />
