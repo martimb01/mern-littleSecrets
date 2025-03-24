@@ -59,16 +59,11 @@ const LandingPage = () =>{
                 <button type="submit">Login</button>
             </form>
         </div>
+        
 
         <div className={styles.mainContainer}>
+        <p className={styles.register} onClick={() => {nav('/register')}}>Dont have an account? Create one today!</p>
             <img src={logo} className={styles.welcomeImg} />
-            <div className={styles.infoContainer}>
-                <h1>Welcome to little secrets!</h1>
-                <h3>This is a website where you can store all your little secrets
-                    and share them with your friends!
-                </h3>
-                <h2>Don't have an account? Register today!</h2>
-            </div>
         </div>
         </>
     )

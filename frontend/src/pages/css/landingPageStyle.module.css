@@ -4,8 +4,9 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 72px;
-    background-color: purple;
+    height: 75px;
+    z-index: 500;
+    background-color: #1a1a1a;
     align-items: center;
     position: fixed;
     top: 0;
@@ -13,8 +14,11 @@
 }
 
 .loginBar img {
-    height: 70px;
+    max-height: 100px;
+    width: 130px;
     margin-left: 2%;
+    background-color: white;
+    border-radius: 3%;
 }
 
 .loginBar form {
@@ -40,33 +44,43 @@
 }
 
 .loginForm button {
+    padding: 4px 10px; 
     margin-top: 5.5%;
     height: 40%;
+    background-color: #333; 
+    color: #f0f0f0; 
+    border: none;
+    border-radius: 5px;
+}
+.loginForm button:hover{
+    background-color: #444; 
 }
 
 .mainContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: 72px;
+    justify-content: center;
+    align-items: center;
 }
 
 /*Styling for the welcome imamge*/
 .welcomeImg {
-    margin-left: 200px;
-    margin-top: 300px;
-    scale: 120%;
+    margin-top: 5%;
+    transform: scale(1.2);
+    max-width: 100%;
+    height: auto;
 }
 
-.infoContainer {
-    background-color: red;
-    padding: 10px 10px 10px 10px;
-    margin-left: auto;
-    margin-top: 30px;
-    border-radius: 10px;
-    text-align: center;
-    height: 50%;
+.register {
+    margin-top: 30px; 
+    font-size: 30px; 
+    color: white; /* Match the theme */
+    text-align: center; /* Center the text */
+    cursor: pointer; /* Add a pointer cursor for interactivity */
+    transition: color 0.3s ease; /* Add a hover effect */
 }
 
-.infoContainer h2 {
-    margin-top: 100px;
+.register:hover {
+    color: #000000; /* Change color on hover */
 }
