@@ -1,0 +1,22 @@
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: pink;
+    align-items: center;
+    margin: 0 auto;
+    padding: 50px 0;
+    gap: 10px;
+    width: 40%;
+    height:100%;
+    border-radius: 10px;
+}
+
+.formRow {
+    display: flex;
+    flex-direction: column;
+}
+
+.formRowDate {
+    display: flex;
+    flex-direction: column;
+}

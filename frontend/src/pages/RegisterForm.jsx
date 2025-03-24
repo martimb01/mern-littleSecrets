@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import styles from './css/formStyle.module.css'
 
 
 const RegisterForm =  () => {
@@ -39,29 +40,29 @@ const RegisterForm =  () => {
     return (
         <>
         <h1>Register form</h1>
-        <form onSubmit={handleRegister}>
-            <div className='form-row'>
+        <form className={styles.formContainer} onSubmit={handleRegister}>
+            <div className={styles.formRow}>
                 <label>username</label>
                     <input type='text'
                     name='username'
                     value={inputs.username || ''}
                     onChange={handleChange} />
             </div>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>First Name</label>
                     <input type='text'
                     name='firstName'
                     value={inputs.firstName || ''}
                     onChange={handleChange} />
             </div>
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>Last Name</label>
                     <input type='text'
                     name='lastName'
                     value={inputs.lastName || ''}
                     onChange={handleChange} />
             </div>
-            <div className='form-row'>
+            <div className={styles.formRowDate}>
                 <label>Date of Birth</label>
                     <input type='date'
                     name='dateOfBirth'
@@ -69,7 +70,7 @@ const RegisterForm =  () => {
                     onChange={handleChange} />
             </div>
             <br />
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>email</label>
                     <input type='text'
                     name='email'
@@ -77,7 +78,7 @@ const RegisterForm =  () => {
                     onChange={handleChange} />
             </div>
             <br />
-            <div className='form-row'>
+            <div className={styles.formRow}>
                 <label>password</label>
                     <input type='password'
                     name='password'
@@ -85,7 +86,7 @@ const RegisterForm =  () => {
                     onChange={handleChange} /> 
             </div>
             <br />
-            <button type="submit">Register!</button>
+            <button type={styles.submitBtn}>Register!</button>
         </form>
         {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
         {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}

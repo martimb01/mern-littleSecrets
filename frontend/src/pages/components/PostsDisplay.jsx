@@ -44,7 +44,7 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
                             <img src={post.imgUrl} />
                         </div>)}
                 </div>
-            ))) : <h2>No posts yet! Create one!</h2>}
+            ))) : <h2>This is where you can create your own personal secrets! Create one!</h2>}
         </div>
     )
 }
