@@ -35,7 +35,7 @@ const UpdateUserForm = () => {
     return (
         <>
         <NavBar />
-        {successMessage && <p className={styles.SuccessMessage}>{successMessage}</p>}
+        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         <form onSubmit={handleUpdate} className={styles.formContainer}>
             <div className={styles.formRow}>

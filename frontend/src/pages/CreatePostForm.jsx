@@ -1,9 +1,11 @@
 import React, {useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import NavBar from './components/NavBar';
 import styles from './css/formStyle.module.css'
 
 const CreatePostForm = () => {
+    const nav = useNavigate()
     const [inputs, setInputs] = useState({})
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -26,7 +28,7 @@ const CreatePostForm = () => {
            })
            console.log(res.data.message)
            setSuccessMessage(res.data.message)
-           setTimeout(() => {setSuccessMessage('')}, 2000)
+           setTimeout(() => {nav('/homepage')}, 2000)
            setErrorMessage('')
         } catch (err) {
             console.log(err.response.data.message)
