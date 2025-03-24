@@ -4,6 +4,7 @@ const connectDB = require('./db')
 require('dotenv').config()
 const userRouter = require ('./routes/usersRoute')
 const postRouter = require('./routes/postRoute')
+const secretRouter = require('./routes/secretsRoute')
 const cors = require('cors')
 
 //Setting up express app
@@ -13,6 +14,7 @@ app.use(cors())
 
 app.use('/user', userRouter)
 app.use('/post', postRouter)
+app.use('/secret', secretRouter)
 
 
 const PORT = process.env.PORT || 3000;
