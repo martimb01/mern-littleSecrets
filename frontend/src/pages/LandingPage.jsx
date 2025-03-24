@@ -3,10 +3,14 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../assets/logov1.png'
 import logoText from '../assets/logotextv0.png'
 import  styles from './css/landingPageStyle.module.css'
-import LoginForm from "./LoginForm"
+import axios from 'axios'
+import RegisterForm from './RegisterForm'
+
 const LandingPage = () =>{
     const nav = useNavigate()
     const [input, setInput] = useState('')
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleChange = (event) => {
         const name = event.target.name
@@ -14,11 +18,28 @@ const LandingPage = () =>{
         setInput({...input, [name]: value})
     }
 
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        try {
+            const res = await axios.post('http://localhost:3000/user/login', input)
+            console.log('LoggedIn!', res.data.token)
+            localStorage.setItem('token', res.data.token)
+            setSuccessMessage(res.data.message)
+            setTimeout(() => {nav('/homepage')}, 3000)
+
+        } catch (err) {
+            console.log(err.response.data.devMessage)
+            setErrorMessage(err.response.data.message)
+            setTimeout(() => {setErrorMessage('')}, 2000)
+        }
+        
+    }
+
     return(
         <>
         <div className={styles.loginBar}>
             <img src={logoText} />
-            <form className={styles.loginForm}>
+            <form className={styles.loginForm} onSubmit={handleSubmit}>
                 <div className={styles.loginFormRow}>
                     <label>Username</label>
                     <input type="text"
@@ -38,7 +59,17 @@ const LandingPage = () =>{
                 <button type="submit">Login</button>
             </form>
         </div>
-        <img src={logo} />
+
+        <div className={styles.mainContainer}>
+            <img src={logo} className={styles.welcomeImg} />
+            <div className={styles.infoContainer}>
+                <h1>Welcome to little secrets!</h1>
+                <h3>This is a website where you can store all your little secrets
+                    and share them with your friends!
+                </h3>
+                <h2>Don't have an account? Register today!</h2>
+            </div>
+        </div>
         </>
     )
 }
