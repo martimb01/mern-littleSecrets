@@ -16,6 +16,11 @@ const postSchema = new mongoose.Schema({
     },
     imgUrl: {
         type:String,
+    },
+    isSecret: {
+        type:Boolean,
+        default: false,
+        required: true
     }
 }, 
 {timestamps: true})
