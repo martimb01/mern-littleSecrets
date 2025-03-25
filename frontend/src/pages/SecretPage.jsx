@@ -39,6 +39,8 @@ const SecretPage = () => {
                                 <h3 className={postStyles.title}>{post.title}</h3>
                                 {/* Right header content */}
                                 <div className={postStyles.headerRight}>
+                                    {/* Author first and last name */}
+                                    <h3 className={postStyles.author}>{post.userId.firstName + ' ' +post.userId.lastName}</h3>
                                     <h3 className={postStyles.date}>{new Date(post.createdAt).toLocaleDateString()}</h3>
                                 </div>
                             </div>
