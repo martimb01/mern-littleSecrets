@@ -5,7 +5,7 @@
     background-color: #1a1a1a; 
     align-items: center; 
     justify-content: center;
-    margin:  100px auto; 
+    margin: 100px auto 20px auto; 
     padding: 20px 50px 50px 50px; 
     gap: 10px; 
     width: 40%; 
@@ -106,5 +106,17 @@
     text-align: center;
 }
 
+.type{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a;
+    text-align: center;
+    width: 30%;
+    margin: 0 auto 100px auto;
+    border-radius: 10px;
+    color: white;
+    padding: 4px 0px 4px 0px;
+}
 
  
