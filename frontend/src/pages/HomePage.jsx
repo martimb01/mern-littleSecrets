@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {getUserDetails, getUserPosts} from '../apiHelpers.js'
+import {getUserDetails, getPosts} from '../apiHelpers.js'
 import PostsDisplay from './components/PostsDisplay'
 import  NavBar from  './components/NavBar'
 import styles from './css/homepageStyle.module.css'
@@ -13,11 +13,11 @@ const HomePage = () => {
     const [userPosts, setUserPosts] = useState([])
 
     const refreshPosts = () => {
-        getUserPosts(setUserPosts, 'personal')
+        getPosts(setUserPosts, 'personal')
     }
 
     useEffect(() => {
-        getUserPosts(setUserPosts, 'personal');
+        getPosts(setUserPosts, 'personal');
         getUserDetails(setUserDetails)
     }, [])
     

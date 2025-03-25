@@ -8,9 +8,10 @@ const CreatePostForm = () => {
     const nav = useNavigate()
     const loc = useLocation()
 
-    //Default secretId to null if theres no loc.state (User is 
+    //Default secretId and secretName to null if theres no loc.state (User is 
     // creating a personal post instead of a shared post in a secret page)
     const secretId = loc.state?.secretId || null 
+    const secretName = loc.state?.secretName || null 
 
     const [inputs, setInputs] = useState({})
     const [successMessage, setSuccessMessage] = useState('');

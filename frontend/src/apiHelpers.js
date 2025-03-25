@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-//Function to get user posts
-export const getUserPosts = async (setUserPosts, type, secretId = null) => {
+//Function to get posts
+export const getPosts = async (setUserPosts, type, secretId = null) => {
     try {
         const token = localStorage.getItem('token')
 
