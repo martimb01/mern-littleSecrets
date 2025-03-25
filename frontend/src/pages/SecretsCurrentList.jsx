@@ -10,6 +10,8 @@ const SecretsCurrentList = () => {
     const nav = useNavigate()
     const [secrets, setSecrets] = useState()
     const [inputs, setInputs] = useState('')
+    const [successMessage, setSuccessMessage] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect( () => {
         getSecrets(setSecrets)
@@ -37,15 +39,23 @@ const SecretsCurrentList = () => {
                 }
             )
             console.log(res.data.message)
+            setSuccessMessage(res.data.message)
+            setErrorMessage('')
+
 
             //Passes that particular secret name, description and id with state
-            nav('/secretPage', {state: {secretName: res.data.secretName, 
-                                        secretDescription: res.data.secretDescription , 
-                                        secretId: res.data.secretId}})
+            setTimeout(() => {
+                nav('/secretPage', {state: {secretName: res.data.secretName, 
+                                                  secretDescription: res.data.secretDescription , 
+                                                  secretId: res.data.secretId}})
+                            }, 2000)
 
         } catch (err) {
             if(err.response){
                 console.log(err.response.data.message)
+                setErrorMessage(err.response.data.message)
+                setSuccessMessage('')
+                setTimeout(() => {setErrorMessage('')}, 2000)
             } else {
                 console.log("Error:", err.message);
             }
@@ -61,6 +71,9 @@ const SecretsCurrentList = () => {
             <p>Secrets are shared pages where only people with access to them can post!</p>
             <h2 onClick={() => {nav('/secretCreation')}}>Want to create your own? Click here!</h2>
         </div>
+
+        {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
+        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
         <div className={styles.secretContainer}>
             {secrets && secrets.map((secret) => (

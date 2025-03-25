@@ -49,7 +49,7 @@ const checkSecretAccess = async (req, res) => {
         const { name, password} = req.body
 
         if (!name || !password) {
-            return res.status(400).json({message:"Secret name and password need to exist!"})   
+            return res.status(400).json({message:"Choose One! Try again!"})   
         }
 
         const secretToAccess = await Secret.findOne({name})
@@ -59,7 +59,7 @@ const checkSecretAccess = async (req, res) => {
 
         const isPasswordValid = await bcrypt.compare(password, secretToAccess.password)
         if (!isPasswordValid) {
-            return res.status(401).json({message:"Wrong secret password!"})
+            return res.status(401).json({message:"Wrong password! You naughty little boy!"})
         }
 
         /* On sucessful access, it return res.secretId as the secret being acessed*/
