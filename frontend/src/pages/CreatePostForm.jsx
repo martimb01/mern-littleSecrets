@@ -54,6 +54,7 @@ const CreatePostForm = () => {
                    })
                    setSuccessMessage(res.data.message)
                    setErrorMessage('')
+                   setTimeout(() => {nav('/allSecretsDisplay')}, 2000)
             }
 
         } catch (err) {
