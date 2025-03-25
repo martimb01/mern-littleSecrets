@@ -46,8 +46,27 @@ const createPost = async (req, res) => {
 
 const getPosts = async (req,res) => {
     try{
-        const posts = await Post.find({userId: req.user.id})
+        const {type} = req.params
+        const {secretId} = req.query
+        let posts
 
+        if (type == 'personal') {
+
+            posts = await Post.find({userId: req.user.id, isSecret: false})
+
+        } else if (type == 'secret') {
+
+            if (!secretId) {
+                return res.status(400).json({message: "SecretId is needed for secret posts!"})
+            }
+            posts = await Post.find({secretId: secretId, isSecret: true})
+
+        } else {
+
+            return res.status(400).json({message:"Invalid type!"})
+
+        }
+        
         if(posts.length === 0) {
             console.log("No posts by that userId")
             return res.status(200).json({message: 'That user has no posts!', posts: []}, )
