@@ -3,6 +3,7 @@ import { getSecrets } from "../apiHelpers";
 import NavBar from "./components/NavBar";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
+import styles from './css/secretsCurrentListStyle.module.css'
 
 const SecretsCurrentList = () => {
     const nav = useNavigate()
@@ -36,7 +37,7 @@ const SecretsCurrentList = () => {
             )
             console.log(res.data.message)
 
-            //Passes that particular secret name with state
+            //Passes that particular secret name, description and id with state
             nav('/secretPage', {state: {secretName: res.data.secretName, secretDescription: res.data.secretDescription , secretId: res.data.secretId}})
 
         } catch (err) {
@@ -52,21 +53,24 @@ const SecretsCurrentList = () => {
     return (
         <>
         <NavBar />
-        {secrets && secrets.map((secret) => (
-            <div key={secret._id}>
-                <form onSubmit={(event) => handleSubmit(event, secret)}>
-                    <h1>{secret.name}</h1>
+        <div className={styles.secretContainer}>
+            {secrets && secrets.map((secret) => (
+                <div key={secret._id} className={styles.secretCard}>
+                    <form onSubmit={(event) => handleSubmit(event, secret)}>
+                        <h1>{secret.name}</h1>
 
-                    <input type="password"
-                           onChange={(event) => handleInputs(event, secret._id)}
-                           name="password"
-                           value={inputs[secret._id] || ''}>
-                    </input>
+                        <input type="password"
+                            onChange={(event) => handleInputs(event, secret._id)}
+                            name="password"
+                            value={inputs[secret._id] || ''}>
+                        </input>
 
-                    <button type="submit">Enter</button>
-                </form>
-            </div>
-        ))}
+                        <button type="submit">Enter</button>
+                    </form>
+                </div>  
+            ))}
+        </div>
+        <h2 onClick={() => {nav('/secretCreation')}}>Create a new secret!</h2>
         </>
     )
 }
