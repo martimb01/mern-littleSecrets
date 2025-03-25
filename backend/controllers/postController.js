@@ -59,7 +59,7 @@ const getPosts = async (req,res) => {
             if (!secretId) {
                 return res.status(400).json({message: "SecretId is needed for secret posts!"})
             }
-            posts = await Post.find({secretId: secretId, isSecret: true})
+            posts = await Post.find({secretId: secretId, isSecret: true}).populate('userId', 'firstName lastName')
 
         } else {
 
