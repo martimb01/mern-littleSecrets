@@ -25,7 +25,7 @@ const PostsDisplay = ({postDetails, refreshPosts}) => {
     return(
         <div className={styles.postsContainer}>
         {postDetails && postDetails.length != 0 ? (
-            postDetails.map((post) => (
+            postDetails.slice().reverse().map((post) => (
                 <div key={post._id} className={styles.postCard} >
                         {/* Header content */}
                         <div className={styles.headerRow}>

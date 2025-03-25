@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import { FaSquarePlus } from "react-icons/fa6";
 import { getPosts } from "../apiHelpers";
 import postStyles from './css/postsDisplayStyle.module.css'
-import styles from './css/homepageStyle.module.css'
+import styles from './css/secretPageStyle.module.css'
 
 
 
@@ -26,13 +26,20 @@ const SecretPage = () => {
     return(
         <>
             <NavBar />
-            {secretName && <h1>{secretName}</h1>}
-            {secretId && <h1>{secretId}</h1>}
-            {secretDescription && <p>{secretDescription}</p>}
-            <FaSquarePlus onClick={createPost} />
-            <div className={styles.homepageContainer}>
+
+
+            <div className={styles.mainContainer}>
+                <div className={styles.welcomeContainer}>
+                    {secretName && <h1>{secretName}</h1>}
+                    <FaSquarePlus className={styles.icon} onClick={createPost} />
+                </div>
+
+                <div className={styles.descriptionContainer}>
+                    {secretDescription && <p>{secretDescription}</p>}
+                </div>
+
                 <div className={postStyles.postsContainer}>
-                    {posts && posts.length != 0 ? posts.map((post) => (
+                    {posts && posts.length != 0 ? posts.slice().reverse().map((post) => (
                         <div key={post._id} className={postStyles.postCard} >
                             {/* Header content */}
                             <div className={postStyles.headerRow}>
