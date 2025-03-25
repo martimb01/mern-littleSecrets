@@ -13,11 +13,11 @@ const HomePage = () => {
     const [userPosts, setUserPosts] = useState([])
 
     const refreshPosts = () => {
-        getUserPosts(setUserPosts)
+        getUserPosts(setUserPosts, 'personal')
     }
 
     useEffect(() => {
-        getUserPosts(setUserPosts);
+        getUserPosts(setUserPosts, 'personal');
         getUserDetails(setUserDetails)
     }, [])
     

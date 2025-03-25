@@ -1,10 +1,14 @@
 import axios from 'axios'
 
 //Function to get user posts
-export const getUserPosts = async (setUserPosts) => {
+export const getUserPosts = async (setUserPosts, type, secretId = null) => {
     try {
         const token = localStorage.getItem('token')
-        const res = await axios.get('http://localhost:3000/post/fetchUserPosts', {
+
+        const url = secretId ? `http://localhost:3000/post/fetchPosts/${type}?secretId=${secretId}`
+                             : `http://localhost:3000/post/fetchPosts/${type}`
+
+        const res = await axios.get(url, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
