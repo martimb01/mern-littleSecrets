@@ -36,6 +36,12 @@ const NavBar = () => {
             </li>
 
             <li className={styles.items} 
+            onClick={() => (nav('/allSecretsDisplay'))}
+            >
+                Secrets
+            </li>
+
+            <li className={styles.items} 
             onClick={() => (nav('/postCreation'))}
             >
                 Create Post
