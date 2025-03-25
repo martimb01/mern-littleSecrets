@@ -89,7 +89,7 @@ const CreatePostForm = () => {
             </div>
             <button type="submit">Create Post!</button>
         </form>
-
+        {secretId ? <p>Shared post</p> : <p>Personal post</p>}
         </>
     )
 }
