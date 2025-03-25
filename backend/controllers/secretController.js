@@ -1,6 +1,21 @@
 const bcrypt = require('bcrypt')
 const Secret = require('../models/secretModel')
 
+const getSecrets = async (req,res) => {
+    try {
+        const secrets = await Secret.find({})
+
+        if (secrets.length == 0) {
+            return res.status(200).json({message:"No Secret pages exist!"})
+        }
+        res.status(200).json({message:"Successful secrets fetch!", secrets})
+
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).json({message:"Something went very wrong fetching secrets!"})
+    }
+}
+
 const createSecret = async (req,res) => {
     try {
         const secret = req.body;
@@ -55,5 +70,5 @@ const checkSecretAccess = async (req, res) => {
     }
 }
 
-module.exports = {createSecret, checkSecretAccess}
+module.exports = {createSecret, checkSecretAccess, getSecrets}
 
