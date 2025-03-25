@@ -7,15 +7,35 @@ const createPost = async (req, res) => {
             console.log('Not all field completed')
            return res.status(400).json({message: 'Post needs to have both a title and content!'})
         }
+
+        if(!post.isSecret) {
+            const newPost = new Post({
+                title: post.title,
+                content: post.content,
+                userId: req.user.id,
+                imgUrl: post.imgUrl
+            })
+            await newPost.save()
+            res.status(201).json({message:'Post created!'})
+            return
+        }
         
+        if(!post.secretId) {
+           return res.status(400).json({message:"Secret posts need to have a secretId to show where they belong"})
+        }
+
         const newPost = new Post({
             title: post.title,
             content: post.content,
             userId: req.user.id,
-            imgUrl: post.imgUrl
+            imgUrl: post.imgUrl,
+            isSecret: post.isSecret,
+            secretId: post.secretId
         })
         await newPost.save()
         res.status(201).json({message:'Post created!'})
+
+
 
     } catch (err) {
         console.log (err.message)
