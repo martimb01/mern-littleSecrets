@@ -20,8 +20,8 @@ const createSecret = async (req,res) => {
     try {
         const secret = req.body;
         if (!secret.name || !secret.password ||!req.user.id) {
-            console.log('Both fields need to be completed')
-            return res.status(400).json({message:"Both fields need to be completed"})
+            console.log('Secret needs a name and password!')
+            return res.status(400).json({message:"Secret needs a name and password!"})
         }
     
         const salt = await bcrypt.genSalt(10)
@@ -29,6 +29,7 @@ const createSecret = async (req,res) => {
     
         const newSecret = new Secret ({
             name: secret.name,
+            description: secret.description,
             password: hashedPassword,
             creatorId: req.user.id
         })
@@ -64,6 +65,7 @@ const checkSecretAccess = async (req, res) => {
         /* On sucessful access, it return res.secretId as the secret being acessed*/
         return res.status(200).json({message:"Access granted!",
                                     secretName:secretToAccess.name,
+                                    secretDescription:secretToAccess.description,
                                     secretId: secretToAccess._id})
 
     } catch (err) {

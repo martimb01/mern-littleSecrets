@@ -37,7 +37,7 @@ const SecretsCurrentList = () => {
             console.log(res.data.message)
 
             //Passes that particular secret name with state
-            nav('/secretPage', {state: {secretName: res.data.secretName, secretId: res.data.secretId}})
+            nav('/secretPage', {state: {secretName: res.data.secretName, secretDescription: res.data.secretDescription , secretId: res.data.secretId}})
 
         } catch (err) {
             if(err.response){
