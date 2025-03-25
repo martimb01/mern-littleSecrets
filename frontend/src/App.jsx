@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import CreatePostForm from "./pages/CreatePostForm";
 import LandingPage from "./pages/LandingPage";
 import UpdateUserForm from "./pages/UpdateUserForm";
+import SecretCurrentExist from "./pages/SecretCurrentExist";
 const App = () => {
     return(
         <>
@@ -16,6 +17,7 @@ const App = () => {
             <Route path = '/homepage' element={<HomePage />} />
             <Route path = '/postCreation' element={<CreatePostForm />} />
             <Route path = '/userUpdate' element={<UpdateUserForm />} />
+            <Route path = '/allSecretsDisplay' element={<SecretCurrentExist />} />
         </Routes>
         </>
     )
