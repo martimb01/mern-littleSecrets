@@ -76,7 +76,7 @@
 
 .errorMessage {
     display: flex;
-    margin: 90px auto 0 auto;
+    margin: 90px auto -80px auto;
     padding: 20px 3px;
     background-color: rgb(146, 42, 42);
     justify-content: center;
@@ -87,11 +87,12 @@
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     font-size: bold;
+    text-align: center;
 }
 
 .successMessage {
     display: flex;
-    margin: 90px auto 0 auto;
+    margin: 90px auto -80px auto;
     padding: 20px 3px;
     background-color: green;
     justify-content: center;

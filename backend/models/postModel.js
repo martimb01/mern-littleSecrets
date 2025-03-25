@@ -21,6 +21,14 @@ const postSchema = new mongoose.Schema({
         type:Boolean,
         default: false,
         required: true
+    },
+    secretId: {
+        type: mongoose.Schema.Types.ObjectId,
+        validate: {
+            validator: function (value) {
+                return (!this.isSecret || this.isSecret && value)
+                }, message: 'secretId is required if isSecret is true'
+        }
     }
 }, 
 {timestamps: true})

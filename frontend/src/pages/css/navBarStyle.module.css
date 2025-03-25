@@ -20,7 +20,7 @@
 
 .items {
     margin-right: 20px;
-    color: #f0f0f0; /* Light text color */
+    color: #b2b2b2; /* Light text color */
     font-size: 20px;
     font-weight: bold;
     cursor: pointer;
@@ -36,7 +36,6 @@
     max-height: 100px; /* Restrict logo height */
     width: 130px;
     transition: transform 0.2s ease;
-    background-color: white;
     border-radius: 3%;
     margin-left: 20px;
 }
