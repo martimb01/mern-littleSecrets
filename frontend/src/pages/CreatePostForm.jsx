@@ -1,11 +1,17 @@
 import React, {useState} from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios'
 import NavBar from './components/NavBar';
 import styles from './css/formStyle.module.css'
 
 const CreatePostForm = () => {
     const nav = useNavigate()
+    const loc = useLocation()
+
+    //Default secretId to null if theres no loc.state (User is 
+    // creating a personal post instead of a shared post in a secret page)
+    const secretId = loc.state?.secretId || null 
+
     const [inputs, setInputs] = useState({})
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -20,16 +26,35 @@ const CreatePostForm = () => {
         event.preventDefault();
 
         try{
-           const token = localStorage.getItem('token')
-           const res = await axios.post('http://localhost:3000/post/create', inputs, {
-            headers: {
-                Authorization: `Bearer ${token}`
+            if (!secretId) {
+                const token = localStorage.getItem('token')
+                const res = await axios.post('http://localhost:3000/post/create', inputs, {
+                 headers: {
+                     Authorization: `Bearer ${token}`
+                 }
+                })
+                console.log(res.data.message)
+                setSuccessMessage(res.data.message)
+                setTimeout(() => {nav('/homepage')}, 2000)
+                setErrorMessage('')
+            } else {
+                const token = localStorage.getItem('token')
+                const res = await axios.post('http://localhost:3000/post/create', {
+                    title: inputs.title,
+                    imgUrl: inputs.imgUrl,
+                    content: inputs.content,
+                    isSecret: true,
+                    secretId: secretId
+                }, 
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                   })
+                   setSuccessMessage(res.data.message)
+                   setErrorMessage('')
             }
-           })
-           console.log(res.data.message)
-           setSuccessMessage(res.data.message)
-           setTimeout(() => {nav('/homepage')}, 2000)
-           setErrorMessage('')
+
         } catch (err) {
             console.log(err.response.data.message)
             setErrorMessage(err.response.data.message)
