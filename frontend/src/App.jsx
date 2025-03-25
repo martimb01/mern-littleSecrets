@@ -8,6 +8,8 @@ import LandingPage from "./pages/LandingPage";
 import UpdateUserForm from "./pages/UpdateUserForm";
 import SecretsCurrentList from "./pages/SecretsCurrentList";
 import SecretPage from "./pages/SecretPage";
+import SecretCreateForm from "./pages/SecretCreateForm";
+
 const App = () => {
     return(
         <>
@@ -20,6 +22,7 @@ const App = () => {
             <Route path = '/userUpdate' element={<UpdateUserForm />} />
             <Route path = '/allSecretsDisplay' element={<SecretsCurrentList />} />
             <Route path = '/secretPage' element={<SecretPage />} />
+            <Route path = '/secretCreation' element={<SecretCreateForm />} />
         </Routes>
         </>
     )
