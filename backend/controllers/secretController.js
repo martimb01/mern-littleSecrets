@@ -62,7 +62,9 @@ const checkSecretAccess = async (req, res) => {
         }
 
         /* On sucessful access, it return res.secretId as the secret being acessed*/
-        return res.status(200).json({message:"Access granted!", secretId: secretToAccess._id})
+        return res.status(200).json({message:"Access granted!",
+                                    secretName:secretToAccess.name,
+                                    secretId: secretToAccess._id})
 
     } catch (err) {
         console.log(err.message)

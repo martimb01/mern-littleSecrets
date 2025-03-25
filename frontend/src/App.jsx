@@ -7,6 +7,7 @@ import CreatePostForm from "./pages/CreatePostForm";
 import LandingPage from "./pages/LandingPage";
 import UpdateUserForm from "./pages/UpdateUserForm";
 import SecretsCurrentList from "./pages/SecretsCurrentList";
+import SecretPage from "./pages/SecretPage";
 const App = () => {
     return(
         <>
@@ -18,6 +19,7 @@ const App = () => {
             <Route path = '/postCreation' element={<CreatePostForm />} />
             <Route path = '/userUpdate' element={<UpdateUserForm />} />
             <Route path = '/allSecretsDisplay' element={<SecretsCurrentList />} />
+            <Route path = '/secretPage' element={<SecretPage />} />
         </Routes>
         </>
     )

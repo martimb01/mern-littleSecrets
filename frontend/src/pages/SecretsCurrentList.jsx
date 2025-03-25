@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import { getSecrets } from "../apiHelpers";
 import NavBar from "./components/NavBar";
 import axios from 'axios'
+import { useNavigate } from "react-router-dom";
 
 const SecretsCurrentList = () => {
+    const nav = useNavigate()
     const [secrets, setSecrets] = useState()
     const [inputs, setInputs] = useState('')
 
@@ -33,6 +35,9 @@ const SecretsCurrentList = () => {
                 }
             )
             console.log(res.data.message)
+
+            //Passes that particular secret name with state
+            nav('/secretPage', {state: {secretName: res.data.secretName, secretId: res.data.secretId}})
 
         } catch (err) {
             if(err.response){
