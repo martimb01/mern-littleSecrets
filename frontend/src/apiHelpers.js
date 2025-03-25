@@ -15,6 +15,7 @@ export const getPosts = async (setUserPosts, type, secretId = null) => {
         })
         setUserPosts(res.data.posts)
         console.log('Sucessful fetch of user posts!')
+        console.log(res.data.posts)
 
 
     } catch (err) {

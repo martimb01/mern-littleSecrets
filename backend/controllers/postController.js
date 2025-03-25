@@ -54,7 +54,7 @@ const getPosts = async (req,res) => {
 
             posts = await Post.find({userId: req.user.id, isSecret: false})
 
-        } else if (type == 'secret') {
+        } else if (type == 'shared') {
 
             if (!secretId) {
                 return res.status(400).json({message: "SecretId is needed for secret posts!"})
