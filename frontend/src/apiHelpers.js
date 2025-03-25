@@ -36,7 +36,7 @@ export const getUserPosts = async (setUserPosts) => {
 }
 
 //Function to get all Secret Pages
-export const getSecrets = async () => {
+export const getSecrets = async (setSecrets) => {
     try {
         const token = localStorage.getItem('token')
         const res = await axios.get('http://localhost:3000/secret/fetchSecrets', {
@@ -44,6 +44,7 @@ export const getSecrets = async () => {
                 Authorization: `Bearer ${token}`
             }
         })
+        setSecrets(res.data.secrets)
         console.log(res.data.message)
         console.log(JSON.stringify(res.data.secrets))
 
