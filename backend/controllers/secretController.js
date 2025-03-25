@@ -28,5 +28,32 @@ const createSecret = async (req,res) => {
     }
 }
 
-module.exports = {createSecret}
+const checkSecretAccess = async (req, res) => {
+    try {
+        const { name, password} = req.body
+
+        if (!name || !password) {
+            return res.status(400).json({message:"Secret name and password need to exist!"})   
+        }
+
+        const secretToAccess = await Secret.findOne({name})
+        if (!secretToAccess) {
+            return res.status(404).json({message:"Secret by that name does not exist"})   
+        }
+
+        const isPasswordValid = await bcrypt.compare(password, secretToAccess.password)
+        if (!isPasswordValid) {
+            return res.status(401).json({message:"Wrong secret password!"})
+        }
+
+        /* On sucessful access, it return res.secretId as the secret being acessed*/
+        return res.status(200).json({message:"Access granted!", secretId: secretToAccess._id})
+
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).json({message:"Something went very wrong checking secret access!"})
+    }
+}
+
+module.exports = {createSecret, checkSecretAccess}
 
