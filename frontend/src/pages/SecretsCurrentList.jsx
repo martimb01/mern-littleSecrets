@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import styles from './css/secretsCurrentListStyle.module.css'
+import logo from '../assets/logov0white.png'
 
 const SecretsCurrentList = () => {
     const nav = useNavigate()
@@ -65,7 +66,10 @@ const SecretsCurrentList = () => {
             {secrets && secrets.map((secret) => (
                 <div key={secret._id} className={styles.secretCard}>
                     <form onSubmit={(event) => handleSubmit(event, secret)}>
-                        <h1>{secret.name}</h1>
+                        <div className={styles.header}>
+                            <img src={logo} alt="shhhhh" />
+                            <h1>{secret.name}</h1>
+                        </div>
 
                         <div className={styles.formRow}>
                             <input type="password"
