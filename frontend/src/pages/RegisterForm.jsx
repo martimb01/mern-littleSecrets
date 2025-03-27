@@ -15,7 +15,6 @@ const RegisterForm =  () => {
         const name = event.target.name;
         const value = event.target.value;
         setInputs((values) => {return {...values, [name]: value}})
-        console.log(inputs)
     }
 
     const handleRegister = async (event) => {
@@ -98,6 +97,7 @@ const RegisterForm =  () => {
             <button type='submit'>Register</button>
             <div className={styles.formInfo}>
                 <p>Username and password need to be atleast 5 characters </p>
+                <p>Username and password need unique </p>
                 <p>Fields with * are required</p>
             </div>
         </form>

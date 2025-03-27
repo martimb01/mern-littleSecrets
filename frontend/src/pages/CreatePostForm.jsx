@@ -21,7 +21,6 @@ const CreatePostForm = () => {
         const name = event.target.name
         const value = event.target.value
         setInputs({...inputs, [name]: value})
-        console.log(inputs)
     }
     const handleSubmit = async (event) =>{
         event.preventDefault();
