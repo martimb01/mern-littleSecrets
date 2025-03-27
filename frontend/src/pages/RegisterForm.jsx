@@ -51,6 +51,13 @@ const RegisterForm =  () => {
                     onChange={handleChange} />
             </div>
             <div className={styles.formRow}>
+                <label>Profile Image (URL)</label>
+                    <input type='text'
+                    name='profileImgUrl'
+                    value={inputs.profileImgUrl || ''}
+                    onChange={handleChange} />
+            </div>
+            <div className={styles.formRow}>
                 <label>First Name</label>
                     <input type='text'
                     name='firstName'
