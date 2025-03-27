@@ -24,7 +24,7 @@ const RegisterForm =  () => {
         try {
             console.log(inputs)
             const res = await axios.post('http://localhost:3000/user/register', inputs)
-            console.log(JSON.stringify(res.data))
+            console.log("User created successfuly!")
             setSuccessMessage(res.data.message + ' Redirecting to Login Page!')
             setErrorMessage('')
             setTimeout(() => { nav('/login') }, 3000)

@@ -51,7 +51,6 @@ export const getSecrets = async (setSecrets) => {
         })
         setSecrets(res.data.secrets)
         console.log(res.data.message)
-        console.log(JSON.stringify(res.data.secrets))
 
     } catch (err) {
         console.log(err.response.data)

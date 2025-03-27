@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import axios from 'axios'
 import NavBar from "./components/NavBar";
 import styles from './css/formStyle.module.css'
+import { useNavigate } from "react-router-dom";
 
 const UpdateUserForm = () => {
+    const nav = useNavigate()
     const [inputs,setInputs] = useState('');
     const [successMessage, setSuccessMessage] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
@@ -24,8 +26,10 @@ const UpdateUserForm = () => {
                     Authorization: `Bearer ${token}`
                 }
             })
+            console.log('User info updated!')
             setSuccessMessage(res.data.message)
             setErrorMessage('')
+            setTimeout(() => {nav('/homepage')}, 2000)
         } catch (err) {
                 console.log(err.response.data.message);
                 setErrorMessage(err.response.data.message);
