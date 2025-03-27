@@ -17,5 +17,5 @@
 }
 
 .welcomeContainer:hover {
-    transform: scale(1.07); /* Slight zoom effect on logo hover */
+    transform: scale(1.07);
 }

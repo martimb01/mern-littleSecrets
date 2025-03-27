@@ -119,4 +119,18 @@
     padding: 4px 0px 4px 0px;
 }
 
+
+/*Only relevant to the register form*/
+
+.formInfo{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    font-size: 13px;
+    margin-top: 15px;
+}
  
+
+.formInfo p{
+    margin: 1px;
+}

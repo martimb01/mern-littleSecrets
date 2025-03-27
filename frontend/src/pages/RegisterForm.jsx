@@ -97,7 +97,7 @@ const RegisterForm =  () => {
             <br />
             <button type='submit'>Register</button>
             <div className={styles.formInfo}>
-                <p>Username and password need to be atleast 5 characters long</p>
+                <p>Username and password need to be atleast 5 characters </p>
                 <p>Fields with * are required</p>
             </div>
         </form>
