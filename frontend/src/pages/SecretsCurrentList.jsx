@@ -76,7 +76,7 @@ const SecretsCurrentList = () => {
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
         <div className={styles.secretContainer}>
-            {secrets && secrets.length !=0 ? secrets.map((secret) => (
+            {secrets && secrets.length !=0 ? secrets.slice().reverse().map((secret) => (
                 <div key={secret._id} className={styles.secretCard}>
                     <form onSubmit={(event) => handleSubmit(event, secret)}>
                         <div className={styles.header}>
